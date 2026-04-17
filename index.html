@@ -819,6 +819,16 @@
   }
   .blank-input:focus { background: rgba(74,140,92,0.1); }
 
+
+  /* ── SELF-CORRECTING ── */
+  .check-btn { display:inline-flex; align-items:center; gap:8px; padding:10px 22px; background:var(--forest); color:var(--white); border:none; border-radius:8px; font-family:'DM Sans',sans-serif; font-size:14px; font-weight:600; cursor:pointer; margin-top:16px; transition:all .2s; }
+  .check-btn:hover { background:var(--moss); }
+  .reset-btn { display:inline-flex; align-items:center; gap:8px; padding:10px 22px; background:transparent; color:var(--mid); border:1px solid var(--sand); border-radius:8px; font-family:'DM Sans',sans-serif; font-size:14px; cursor:pointer; margin-top:16px; margin-left:10px; transition:all .2s; }
+  .reset-btn:hover { border-color:var(--light); color:var(--body); }
+  .score-badge { display:inline-flex; align-items:center; gap:6px; padding:8px 16px; border-radius:100px; font-size:14px; font-weight:700; }
+  .score-good { background:rgba(45,122,61,.12); color:#2d7a3d; }
+  .score-mid { background:rgba(200,151,58,.12); color:#8a6010; }
+  .score-low { background:rgba(192,57,43,.12); color:#c0392b; }
   /* ── RESPONSIVE ── */
   @media (max-width: 640px) {
     .hero-inner, .main { padding: 32px 20px; }
@@ -1038,13 +1048,13 @@
       </div>
     </div>
 
-    <!-- ACTIVITY 3 -->
+    <!-- ACTIVITY 3 SELF-CORRECTING -->
     <div class="activity">
       <div class="activity-header">
         <div class="activity-num">3</div>
         <div>
           <div class="activity-title">¿Qué es sostenibilidad? — Vocabulario</div>
-          <div class="activity-subtitle">Two-part vocabulary exercise</div>
+          <div class="activity-subtitle">Self-correcting exercises — multiple choice &amp; matching</div>
           <div style="margin-top:8px;">
             <span class="skill-tag tag-vocabulary">📚 Vocabulary</span>
             <span class="skill-tag tag-reading">📖 Reading</span>
@@ -1052,109 +1062,139 @@
         </div>
       </div>
 
-      <p style="font-size:14px;font-weight:600;margin-bottom:12px;">A) Completa la definición de sostenibilidad con las palabras del recuadro. <em>Atención</em>: hay tres palabras que no corresponden al texto.</p>
-
-      <div class="word-bank" style="margin-bottom:20px;">
-        <div class="word-bank-label">Banco de palabras</div>
-        <div class="word-chips">
-          <span class="chip">entorno</span>
-          <span class="chip">concepto</span>
-          <span class="chip">problema</span>
-          <span class="chip">comprometer</span>
-          <span class="chip">satisfacer</span>
-          <span class="chip">económico</span>
-          <span class="chip">aumentar</span>
-          <span class="chip">condiciones</span>
-          <span class="chip">demográfico</span>
-        </div>
-      </div>
-
-      <div class="blank-text">
-        La sostenibilidad es un <input class="blank-input" placeholder="[1]" size="10"> que se refiere a la importancia de atender nuestras necesidades actuales sin <input class="blank-input" placeholder="[2]" size="12"> la capacidad de las generaciones futuras de <input class="blank-input" placeholder="[3]" size="10"> las suyas, garantizando el equilibrio entre crecimiento <input class="blank-input" placeholder="[4]" size="10">, cuidado del medio ambiente y bienestar social. La sostenibilidad se basa en la existencia de <input class="blank-input" placeholder="[5]" size="12"> económicas, ecológicas, sociales y políticas que regulen la acción del hombre en relación con su <input class="blank-input" placeholder="[6]" size="10"> de forma equilibrada.
+      <!-- 3A -->
+      <p style="font-size:14px;font-weight:600;margin-bottom:12px;">A) Selecciona la palabra correcta para cada espacio. <em>Atención</em>: hay opciones extra que no corresponden.</p>
+      <div style="background:var(--sand);border-radius:10px;padding:20px 24px;font-size:14px;line-height:2.6;margin:16px 0;">
+        La sostenibilidad es un
+        <select id="b1" data-answer="concepto" style="border:none;border-bottom:2px solid var(--leaf);background:transparent;font-family:'DM Mono',monospace;font-size:13px;color:var(--moss);padding:2px 6px;cursor:pointer;min-width:120px;">
+          <option value="">▾ elige</option><option>concepto</option><option>problema</option><option>entorno</option><option>aumento</option>
+        </select>
+        [1] que se refiere a la importancia de atender nuestras necesidades actuales sin
+        <select id="b2" data-answer="comprometer" style="border:none;border-bottom:2px solid var(--leaf);background:transparent;font-family:'DM Mono',monospace;font-size:13px;color:var(--moss);padding:2px 6px;cursor:pointer;min-width:140px;">
+          <option value="">▾ elige</option><option>comprometer</option><option>satisfacer</option><option>aumentar</option><option>entender</option>
+        </select>
+        [2] la capacidad de las generaciones futuras de
+        <select id="b3" data-answer="satisfacer" style="border:none;border-bottom:2px solid var(--leaf);background:transparent;font-family:'DM Mono',monospace;font-size:13px;color:var(--moss);padding:2px 6px;cursor:pointer;min-width:120px;">
+          <option value="">▾ elige</option><option>satisfacer</option><option>comprometer</option><option>aumentar</option><option>regular</option>
+        </select>
+        [3] las suyas, garantizando el equilibrio entre crecimiento
+        <select id="b4" data-answer="económico" style="border:none;border-bottom:2px solid var(--leaf);background:transparent;font-family:'DM Mono',monospace;font-size:13px;color:var(--moss);padding:2px 6px;cursor:pointer;min-width:120px;">
+          <option value="">▾ elige</option><option>económico</option><option>demográfico</option><option>ambiental</option><option>social</option>
+        </select>
+        [4], cuidado del medio ambiente y bienestar social. La sostenibilidad se basa en la existencia de
+        <select id="b5" data-answer="condiciones" style="border:none;border-bottom:2px solid var(--leaf);background:transparent;font-family:'DM Mono',monospace;font-size:13px;color:var(--moss);padding:2px 6px;cursor:pointer;min-width:130px;">
+          <option value="">▾ elige</option><option>condiciones</option><option>problemas</option><option>conceptos</option><option>aumentos</option>
+        </select>
+        [5] económicas, ecológicas, sociales y políticas que regulen la acción del hombre en relación con su
+        <select id="b6" data-answer="entorno" style="border:none;border-bottom:2px solid var(--leaf);background:transparent;font-family:'DM Mono',monospace;font-size:13px;color:var(--moss);padding:2px 6px;cursor:pointer;min-width:110px;">
+          <option value="">▾ elige</option><option>entorno</option><option>concepto</option><option>problema</option><option>territorio</option>
+        </select>
+        [6] de forma equilibrada.
         <div style="margin-top:14px;font-size:12px;color:var(--light);font-style:italic;">Fuente: Informe de la Comisión Brundtland, 1987</div>
       </div>
+      <div>
+        <button class="check-btn" onclick="check3a()">✓ Comprobar respuestas</button>
+        <button class="reset-btn" onclick="reset3a()">↺ Reiniciar</button>
+        <span id="score3a"></span>
+      </div>
 
-      <p style="font-size:14px;font-weight:600;margin:20px 0 12px;">B) Relaciona cada palabra con su sinónimo.</p>
+      <!-- 3B -->
+      <p style="font-size:14px;font-weight:600;margin:28px 0 12px;">B) Relaciona cada palabra con su sinónimo correcto. Selecciona y comprueba.</p>
+      <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:8px 16px;align-items:center;margin:16px 0;">
+        <div style="background:var(--sand);border-radius:8px;padding:10px 14px;font-size:14px;font-weight:500;">1. ambiente</div><div style="color:var(--light);font-size:18px;text-align:center;">→</div>
+        <select id="syn1" data-answer="entorno" style="width:100%;padding:10px 14px;border:1px solid var(--sand);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;background:var(--white);cursor:pointer;"><option value="">Elige…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
 
-      <div class="vocab-grid">
-        <div class="vocab-word">ambiente</div><div class="vocab-arrow">→</div>
-        <select class="vocab-select"><option value="">Elige un sinónimo…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>solucionar</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
+        <div style="background:var(--sand);border-radius:8px;padding:10px 14px;font-size:14px;font-weight:500;">2. apoyar</div><div style="color:var(--light);font-size:18px;text-align:center;">→</div>
+        <select id="syn2" data-answer="respaldar" style="width:100%;padding:10px 14px;border:1px solid var(--sand);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;background:var(--white);cursor:pointer;"><option value="">Elige…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
 
-        <div class="vocab-word">apoyar</div><div class="vocab-arrow">→</div>
-        <select class="vocab-select"><option value="">Elige un sinónimo…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>solucionar</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
+        <div style="background:var(--sand);border-radius:8px;padding:10px 14px;font-size:14px;font-weight:500;">3. congruente</div><div style="color:var(--light);font-size:18px;text-align:center;">→</div>
+        <select id="syn3" data-answer="coherente" style="width:100%;padding:10px 14px;border:1px solid var(--sand);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;background:var(--white);cursor:pointer;"><option value="">Elige…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
 
-        <div class="vocab-word">congruente</div><div class="vocab-arrow">→</div>
-        <select class="vocab-select"><option value="">Elige un sinónimo…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>solucionar</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
+        <div style="background:var(--sand);border-radius:8px;padding:10px 14px;font-size:14px;font-weight:500;">4. descuidar</div><div style="color:var(--light);font-size:18px;text-align:center;">→</div>
+        <select id="syn4" data-answer="desatender" style="width:100%;padding:10px 14px;border:1px solid var(--sand);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;background:var(--white);cursor:pointer;"><option value="">Elige…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
 
-        <div class="vocab-word">descuidar</div><div class="vocab-arrow">→</div>
-        <select class="vocab-select"><option value="">Elige un sinónimo…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>solucionar</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
+        <div style="background:var(--sand);border-radius:8px;padding:10px 14px;font-size:14px;font-weight:500;">5. equitativo</div><div style="color:var(--light);font-size:18px;text-align:center;">→</div>
+        <select id="syn5" data-answer="ecuánime" style="width:100%;padding:10px 14px;border:1px solid var(--sand);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;background:var(--white);cursor:pointer;"><option value="">Elige…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
 
-        <div class="vocab-word">equitativo</div><div class="vocab-arrow">→</div>
-        <select class="vocab-select"><option value="">Elige un sinónimo…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>solucionar</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
+        <div style="background:var(--sand);border-radius:8px;padding:10px 14px;font-size:14px;font-weight:500;">6. interactuar</div><div style="color:var(--light);font-size:18px;text-align:center;">→</div>
+        <select id="syn6" data-answer="participar" style="width:100%;padding:10px 14px;border:1px solid var(--sand);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;background:var(--white);cursor:pointer;"><option value="">Elige…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
 
-        <div class="vocab-word">interactuar</div><div class="vocab-arrow">→</div>
-        <select class="vocab-select"><option value="">Elige un sinónimo…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>solucionar</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
+        <div style="background:var(--sand);border-radius:8px;padding:10px 14px;font-size:14px;font-weight:500;">7. preservar</div><div style="color:var(--light);font-size:18px;text-align:center;">→</div>
+        <select id="syn7" data-answer="conservar" style="width:100%;padding:10px 14px;border:1px solid var(--sand);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;background:var(--white);cursor:pointer;"><option value="">Elige…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
 
-        <div class="vocab-word">preservar</div><div class="vocab-arrow">→</div>
-        <select class="vocab-select"><option value="">Elige un sinónimo…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>solucionar</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
+        <div style="background:var(--sand);border-radius:8px;padding:10px 14px;font-size:14px;font-weight:500;">8. riqueza</div><div style="color:var(--light);font-size:18px;text-align:center;">→</div>
+        <select id="syn8" data-answer="capital" style="width:100%;padding:10px 14px;border:1px solid var(--sand);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;background:var(--white);cursor:pointer;"><option value="">Elige…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
 
-        <div class="vocab-word">riqueza</div><div class="vocab-arrow">→</div>
-        <select class="vocab-select"><option value="">Elige un sinónimo…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>solucionar</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
+        <div style="background:var(--sand);border-radius:8px;padding:10px 14px;font-size:14px;font-weight:500;">9. solvencia</div><div style="color:var(--light);font-size:18px;text-align:center;">→</div>
+        <select id="syn9" data-answer="capacidad" style="width:100%;padding:10px 14px;border:1px solid var(--sand);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;background:var(--white);cursor:pointer;"><option value="">Elige…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
 
-        <div class="vocab-word">solvencia</div><div class="vocab-arrow">→</div>
-        <select class="vocab-select"><option value="">Elige un sinónimo…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>solucionar</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
-
-        <div class="vocab-word">tratado</div><div class="vocab-arrow">→</div>
-        <select class="vocab-select"><option value="">Elige un sinónimo…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>solucionar</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
+        <div style="background:var(--sand);border-radius:8px;padding:10px 14px;font-size:14px;font-weight:500;">10. tratado</div><div style="color:var(--light);font-size:18px;text-align:center;">→</div>
+        <select id="syn10" data-answer="acuerdo" style="width:100%;padding:10px 14px;border:1px solid var(--sand);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;background:var(--white);cursor:pointer;"><option value="">Elige…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
+      </div>
+      <div>
+        <button class="check-btn" onclick="check3b()">✓ Comprobar respuestas</button>
+        <button class="reset-btn" onclick="reset3b()">↺ Reiniciar</button>
+        <span id="score3b"></span>
       </div>
     </div>
 
-    <!-- ACTIVITY 4 -->
+    <!-- ACTIVITY 4 DRAG AND DROP -->
     <div class="activity">
       <div class="activity-header">
         <div class="activity-num">4</div>
         <div>
           <div class="activity-title">Dimensiones de la Sostenibilidad</div>
-          <div class="activity-subtitle">Classify sustainability principles by dimension</div>
+          <div class="activity-subtitle">Drag &amp; drop the principles into the dimensions · No right or wrong answer — for class discussion</div>
           <div style="margin-top:8px;">
             <span class="skill-tag tag-vocabulary">📚 Vocabulary</span>
             <span class="skill-tag tag-speaking">🗣 Speaking</span>
           </div>
         </div>
       </div>
+      <div class="instruction">Arrastra cada principio al recuadro de la dimensión que corresponda. Algunos se pueden clasificar en más de una categoría. Comparad vuestras decisiones en clase. No hay respuestas incorrectas.</div>
+      <div style="background:rgba(74,140,92,0.08);border-radius:8px;padding:14px 18px;margin-bottom:16px;font-size:13px;"><strong>Ejemplo — Ambiental:</strong> Mantener los aspectos biológicos en su productividad y diversidad a lo largo del tiempo.</div>
 
-      <div class="instruction">Agrupa los siguientes principios de acuerdo con la dimensión de sostenibilidad a la que pertenecen: <strong>ambiental, social, económica, política, cultural</strong>, etc. Algunos conceptos se aplican a más de una categoría.</div>
-
-      <div style="background:rgba(74,140,92,0.08);border-radius:8px;padding:14px 18px;margin-bottom:16px;font-size:13px;">
-        <strong>Ejemplo — Ambiental:</strong> Mantener los aspectos biológicos en su productividad y diversidad a lo largo del tiempo.
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:10px;">Principios — arrastra al recuadro correspondiente</div>
+      <div id="principlesSource" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:8px;margin-bottom:20px;padding:16px;background:var(--sand);border-radius:10px;">
+        <div draggable="true" data-id="p1" ondragstart="dimDragStart(event)" style="background:var(--white);border:1px solid var(--sand);border-radius:8px;padding:10px 12px;cursor:grab;display:flex;gap:10px;align-items:flex-start;font-size:13px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--light);flex-shrink:0;padding-top:2px;">01</span><span>Generar riqueza en forma adecuada y equitativa en distintos ámbitos sociales.</span></div>
+        <div draggable="true" data-id="p2" ondragstart="dimDragStart(event)" style="background:var(--white);border:1px solid var(--sand);border-radius:8px;padding:10px 12px;cursor:grab;display:flex;gap:10px;align-items:flex-start;font-size:13px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--light);flex-shrink:0;padding-top:2px;">02</span><span>Fomentar el desarrollo humano sin descuidar el ambiente donde se vive.</span></div>
+        <div draggable="true" data-id="p3" ondragstart="dimDragStart(event)" style="background:var(--white);border:1px solid var(--sand);border-radius:8px;padding:10px 12px;cursor:grab;display:flex;gap:10px;align-items:flex-start;font-size:13px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--light);flex-shrink:0;padding-top:2px;">03</span><span>Preservar los recursos naturales fomentando una responsabilidad consciente sobre lo ecológico.</span></div>
+        <div draggable="true" data-id="p4" ondragstart="dimDragStart(event)" style="background:var(--white);border:1px solid var(--sand);border-radius:8px;padding:10px 12px;cursor:grab;display:flex;gap:10px;align-items:flex-start;font-size:13px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--light);flex-shrink:0;padding-top:2px;">04</span><span>Fortalecer la producción y el consumo sin afectar la solvencia económica de la población.</span></div>
+        <div draggable="true" data-id="p5" ondragstart="dimDragStart(event)" style="background:var(--white);border:1px solid var(--sand);border-radius:8px;padding:10px 12px;cursor:grab;display:flex;gap:10px;align-items:flex-start;font-size:13px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--light);flex-shrink:0;padding-top:2px;">05</span><span>Redistribuir el poder político con reglas congruentes y un marco jurídico que garantice los derechos civiles.</span></div>
+        <div draggable="true" data-id="p6" ondragstart="dimDragStart(event)" style="background:var(--white);border:1px solid var(--sand);border-radius:8px;padding:10px 12px;cursor:grab;display:flex;gap:10px;align-items:flex-start;font-size:13px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--light);flex-shrink:0;padding-top:2px;">06</span><span>Generar estructuras democráticas que fomenten relaciones solidarias entre comunidades y regiones.</span></div>
+        <div draggable="true" data-id="p7" ondragstart="dimDragStart(event)" style="background:var(--white);border:1px solid var(--sand);border-radius:8px;padding:10px 12px;cursor:grab;display:flex;gap:10px;align-items:flex-start;font-size:13px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--light);flex-shrink:0;padding-top:2px;">07</span><span>Perseguir la equidad de todos los estratos sociales para que se beneficien del crecimiento económico.</span></div>
+        <div draggable="true" data-id="p8" ondragstart="dimDragStart(event)" style="background:var(--white);border:1px solid var(--sand);border-radius:8px;padding:10px 12px;cursor:grab;display:flex;gap:10px;align-items:flex-start;font-size:13px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--light);flex-shrink:0;padding-top:2px;">08</span><span>Satisfacer las necesidades básicas del individuo según los tratados internacionales de derechos humanos.</span></div>
+        <div draggable="true" data-id="p9" ondragstart="dimDragStart(event)" style="background:var(--white);border:1px solid var(--sand);border-radius:8px;padding:10px 12px;cursor:grab;display:flex;gap:10px;align-items:flex-start;font-size:13px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--light);flex-shrink:0;padding-top:2px;">09</span><span>Apoyar la conservación de las tradiciones y los derechos de las comunidades regionales sobre su territorio.</span></div>
+        <div draggable="true" data-id="p10" ondragstart="dimDragStart(event)" style="background:var(--white);border:1px solid var(--sand);border-radius:8px;padding:10px 12px;cursor:grab;display:flex;gap:10px;align-items:flex-start;font-size:13px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--light);flex-shrink:0;padding-top:2px;">10</span><span>Mantener niveles armónicos de acceso a protección social: vivienda, educación, salud, etc.</span></div>
+        <div draggable="true" data-id="p11" ondragstart="dimDragStart(event)" style="background:var(--white);border:1px solid var(--sand);border-radius:8px;padding:10px 12px;cursor:grab;display:flex;gap:10px;align-items:flex-start;font-size:13px;"><span style="font-family:'DM Mono',monospace;font-size:11px;color:var(--light);flex-shrink:0;padding-top:2px;">11</span><span>Ejercer el derecho a expresar diferentes ideologías e interactuar en los procesos electivos de gobiernos.</span></div>
       </div>
 
-      <div style="font-size:14px;margin-bottom:16px;"><strong>Principios a clasificar:</strong></div>
-
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin-bottom:20px;">
-        <div class="principle-item">Generar riqueza en forma adecuada y equitativa en distintos ámbitos sociales.</div>
-        <div class="principle-item">Fomentar el desarrollo humano sin descuidar el ambiente donde se vive.</div>
-        <div class="principle-item">Ocuparse por la preservación de los recursos naturales fomentando una responsabilidad consciente sobre lo ecológico.</div>
-        <div class="principle-item">Fortalecer la producción y el consumo sin afectar la solvencia económica de la población.</div>
-        <div class="principle-item">Redistribuir el poder político con reglas congruentes, un gobierno seguro y un marco jurídico que garantice el respeto a los derechos civiles.</div>
-        <div class="principle-item">Generar estructuras democráticas que fomenten relaciones solidarias entre comunidades y regiones.</div>
-        <div class="principle-item">Perseguir la equidad de todos los estratos sociales para que se beneficien de las virtudes del crecimiento económico.</div>
-        <div class="principle-item">Satisfacer las necesidades básicas del individuo, establecidas en los principios generales de los tratados internacionales sobre los derechos humanos.</div>
-        <div class="principle-item">Apoyar acciones útiles a la conservación de las tradiciones y de los derechos de las comunidades regionales sobre el territorio que se habita.</div>
-        <div class="principle-item">Mantener niveles armónicos y satisfactorios de acceso a sistemas de protección social como vivienda, educación, salud, etc.</div>
-        <div class="principle-item">Ejercer el derecho a expresar diferentes ideologías y la posibilidad de los ciudadanos de interactuar en los procesos electivos de gobiernos y sistemas jurídicos.</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:12px;margin:16px 0;">
+        <div id="dim-ambiental" style="background:var(--sand);border-radius:10px;padding:14px;min-height:140px;border:2px dashed transparent;transition:all .2s;" ondragover="dimAllowDrop(event)" ondrop="dimDrop(event,'dim-ambiental')">
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#2d5a3d;margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid #2d5a3d;">🌱 Ambiental</div>
+          <div class="dim-drop-zone"></div>
+        </div>
+        <div id="dim-social" style="background:var(--sand);border-radius:10px;padding:14px;min-height:140px;border:2px dashed transparent;transition:all .2s;" ondragover="dimAllowDrop(event)" ondrop="dimDrop(event,'dim-social')">
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#1a5a8a;margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid #1a5a8a;">👥 Social</div>
+          <div class="dim-drop-zone"></div>
+        </div>
+        <div id="dim-economica" style="background:var(--sand);border-radius:10px;padding:14px;min-height:140px;border:2px dashed transparent;transition:all .2s;" ondragover="dimAllowDrop(event)" ondrop="dimDrop(event,'dim-economica')">
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#8a6010;margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid #8a6010;">💰 Económica</div>
+          <div class="dim-drop-zone"></div>
+        </div>
+        <div id="dim-politica" style="background:var(--sand);border-radius:10px;padding:14px;min-height:140px;border:2px dashed transparent;transition:all .2s;" ondragover="dimAllowDrop(event)" ondrop="dimDrop(event,'dim-politica')">
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#5a2d6a;margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid #5a2d6a;">🏛 Política</div>
+          <div class="dim-drop-zone"></div>
+        </div>
+        <div id="dim-cultural" style="background:var(--sand);border-radius:10px;padding:14px;min-height:140px;border:2px dashed transparent;transition:all .2s;" ondragover="dimAllowDrop(event)" ondrop="dimDrop(event,'dim-cultural')">
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#0d5a48;margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid #0d5a48;">🎭 Cultural</div>
+          <div class="dim-drop-zone"></div>
+        </div>
       </div>
-
-      <div class="dim-grid">
-        <div class="dim-col"><div class="dim-col-title">🌱 Ambiental</div><textarea placeholder="Escribe aquí…"></textarea></div>
-        <div class="dim-col"><div class="dim-col-title">👥 Social</div><textarea placeholder="Escribe aquí…"></textarea></div>
-        <div class="dim-col"><div class="dim-col-title">💰 Económica</div><textarea placeholder="Escribe aquí…"></textarea></div>
-        <div class="dim-col"><div class="dim-col-title">🏛 Política</div><textarea placeholder="Escribe aquí…"></textarea></div>
-        <div class="dim-col"><div class="dim-col-title">🎭 Cultural</div><textarea placeholder="Escribe aquí…"></textarea></div>
-      </div>
+      <button onclick="resetDimensions()" style="display:inline-flex;align-items:center;gap:8px;padding:10px 22px;background:transparent;color:var(--mid);border:1px solid var(--sand);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;cursor:pointer;margin-top:8px;">↺ Reiniciar clasificación</button>
     </div>
 
-    <!-- ACTIVITY 5 -->
+        <!-- ACTIVITY 5 -->
     <div class="activity">
       <div class="activity-header">
         <div class="activity-num">5</div>
@@ -1175,7 +1215,7 @@
         <div class="video-grid">
           <div class="video-card">
             <div class="video-thumb">
-              <iframe src="https://www.youtube.com/embed/-r5JFt1niEg" title="Video 1: Industria y sostenibilidad" allowfullscreen loading="lazy"></iframe>
+              <iframe src="https://www.youtube.com/embed/H_A-FZRmhrg" title="Video 1: Industria y sostenibilidad" allowfullscreen loading="lazy"></iframe>
             </div>
             <div class="video-info">
               <div class="video-label">Video 1 · 2'43"</div>
@@ -1359,14 +1399,14 @@
             <td style="width:25%;"><input type="text" placeholder="Categoría(s)…"></td>
             <td>
               <strong>Natura Cosméticos</strong> produce y comercializa cosméticos, higiene personal y perfumería. El 65% de sus distribuidoras independientes provienen de los estratos más bajos de la población. Ha desarrollado un esquema de reutilización de empaques que recoge aproximadamente 38 toneladas anuales de residuos, reduciendo las emisiones de gases de efecto invernadero.
-              <br><a href="https://especiales.semana.com/empresas-que-mas-aportan/2017-2018/natura.html" target="_blank" rel="noopener" style="font-size:12px;color:var(--leaf);">↗ Más información</a>
+              <br><a href="https://naturabrasil.fr/es/pages/quienes-somos?srsltid=AfmBOopjFvYTnDQvd9l_4zgeon3J2WJrVI1lIlZJlsXfF-OSDQpOkLyu" target="_blank" rel="noopener" style="font-size:12px;color:var(--leaf);">↗ Más información</a>
             </td>
           </tr>
           <tr>
             <td><input type="text" placeholder="Categoría(s)…"></td>
             <td>
               <strong>Fundación Carulla</strong> inició un proceso para educar a niños en ciudades con altos índices de pobreza, violencia intrafamiliar y personas desplazadas. En 2011, junto con el FOMIN del BID, creó un modelo de franquicia para proveer servicios de calidad a la población infantil de bajos ingresos.
-              <br><a href="https://afecolombia.org/fundaciones/fundacion-carulla-aeiotu/" target="_blank" rel="noopener" style="font-size:12px;color:var(--leaf);">↗ Más información</a>
+              <br><a href="https://fundacioncarulla.com/" target="_blank" rel="noopener" style="font-size:12px;color:var(--leaf);">↗ Más información</a>
             </td>
           </tr>
           <tr>
@@ -1549,81 +1589,70 @@
       </div>
     </div>
 
-    <!-- ACTIVITY 11 -->
+    <!-- ACTIVITY 11 DRAG AND DROP PERIFRASIS -->
     <div class="activity">
       <div class="activity-header">
         <div class="activity-num">11</div>
         <div>
-          <div class="activity-title">Forma Perífrasis — Ejercicio Práctico</div>
-          <div class="activity-subtitle">Complete the sentences using the correct verbal periphrasis</div>
-          <div style="margin-top:8px;">
-            <span class="skill-tag tag-grammar">📝 Grammar</span>
-          </div>
+          <div class="activity-title">Identifica las Perífrasis — Ejercicio Interactivo</div>
+          <div class="activity-subtitle">Drag each periphrasis to its category · Self-correcting</div>
+          <div style="margin-top:8px;"><span class="skill-tag tag-grammar">📝 Grammar</span></div>
         </div>
       </div>
+      <div class="instruction">Cada oración contiene una perífrasis verbal en negrita. Arrástrala al tipo correcto: <strong>Final de acción</strong>, <strong>Acción durativa</strong> o <strong>Inicio de acción</strong>. Luego comprueba tus respuestas.</div>
 
-      <div class="instruction">Forma perífrasis con los elementos del recuadro y utilízalas para completar las oraciones. No todas las perífrasis necesitan preposición. Recuerda conjugar los verbos.</div>
-
-      <div class="word-bank">
-        <div class="word-bank-label">Verbos conjugados</div>
-        <div class="word-chips" style="margin-bottom:10px;">
-          <span class="chip">acaban</span><span class="chip">comenzar</span><span class="chip">continuar</span><span class="chip">dejaron</span><span class="chip">empezar</span><span class="chip">llegó</span><span class="chip">llevan</span><span class="chip">siguen</span><span class="chip">ir</span>
-        </div>
-        <div class="word-bank-label" style="margin-top:8px;">Preposiciones (opcionales)</div>
-        <div class="word-chips" style="margin-bottom:10px;">
-          <span class="chip">sin</span><span class="chip">a</span><span class="chip">de</span>
-        </div>
-        <div class="word-bank-label" style="margin-top:8px;">Verbos en infinitivo/gerundio</div>
-        <div class="word-chips">
-          <span class="chip">aumentando</span><span class="chip">buscando</span><span class="chip">cumplidos</span><span class="chip">firmar</span><span class="chip">lograr</span><span class="chip">presentando</span><span class="chip">tomar</span><span class="chip">tratando</span><span class="chip">salir</span><span class="chip">ser</span><span class="chip">vivir</span>
-        </div>
+      <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mid);margin-bottom:8px;">Perífrasis a clasificar — arrastra al recuadro</div>
+      <div id="periSource" style="display:flex;flex-wrap:wrap;gap:8px;margin:16px 0;padding:16px;background:var(--sand);border-radius:10px;min-height:60px;">
+        <div draggable="true" data-id="pc1" data-answer="durativa" ondragstart="periDragStart(event)" style="background:var(--white);border:1px solid var(--leaf);border-radius:6px;padding:6px 14px;font-size:13px;font-family:'DM Mono',monospace;color:var(--moss);cursor:grab;user-select:none;transition:all .15s;">sigue creciendo</div>
+        <div draggable="true" data-id="pc2" data-answer="final" ondragstart="periDragStart(event)" style="background:var(--white);border:1px solid var(--leaf);border-radius:6px;padding:6px 14px;font-size:13px;font-family:'DM Mono',monospace;color:var(--moss);cursor:grab;user-select:none;transition:all .15s;">llegó a alcanzar</div>
+        <div draggable="true" data-id="pc3" data-answer="durativa" ondragstart="periDragStart(event)" style="background:var(--white);border:1px solid var(--leaf);border-radius:6px;padding:6px 14px;font-size:13px;font-family:'DM Mono',monospace;color:var(--moss);cursor:grab;user-select:none;transition:all .15s;">van enfrentando</div>
+        <div draggable="true" data-id="pc4" data-answer="final" ondragstart="periDragStart(event)" style="background:var(--white);border:1px solid var(--leaf);border-radius:6px;padding:6px 14px;font-size:13px;font-family:'DM Mono',monospace;color:var(--moss);cursor:grab;user-select:none;transition:all .15s;">acabó reduciendo</div>
+        <div draggable="true" data-id="pc5" data-answer="inicio" ondragstart="periDragStart(event)" style="background:var(--white);border:1px solid var(--leaf);border-radius:6px;padding:6px 14px;font-size:13px;font-family:'DM Mono',monospace;color:var(--moss);cursor:grab;user-select:none;transition:all .15s;">comenzó a implementar</div>
+        <div draggable="true" data-id="pc6" data-answer="durativa" ondragstart="periDragStart(event)" style="background:var(--white);border:1px solid var(--leaf);border-radius:6px;padding:6px 14px;font-size:13px;font-family:'DM Mono',monospace;color:var(--moss);cursor:grab;user-select:none;transition:all .15s;">continúa enfrentando</div>
+        <div draggable="true" data-id="pc7" data-answer="durativa" ondragstart="periDragStart(event)" style="background:var(--white);border:1px solid var(--leaf);border-radius:6px;padding:6px 14px;font-size:13px;font-family:'DM Mono',monospace;color:var(--moss);cursor:grab;user-select:none;transition:all .15s;">siguen sin superar</div>
+        <div draggable="true" data-id="pc8" data-answer="inicio" ondragstart="periDragStart(event)" style="background:var(--white);border:1px solid var(--leaf);border-radius:6px;padding:6px 14px;font-size:13px;font-family:'DM Mono',monospace;color:var(--moss);cursor:grab;user-select:none;transition:all .15s;">empiezan a diversificar</div>
+        <div draggable="true" data-id="pc9" data-answer="durativa" ondragstart="periDragStart(event)" style="background:var(--white);border:1px solid var(--leaf);border-radius:6px;padding:6px 14px;font-size:13px;font-family:'DM Mono',monospace;color:var(--moss);cursor:grab;user-select:none;transition:all .15s;">lleva perdiendo</div>
+        <div draggable="true" data-id="pc10" data-answer="final" ondragstart="periDragStart(event)" style="background:var(--white);border:1px solid var(--leaf);border-radius:6px;padding:6px 14px;font-size:13px;font-family:'DM Mono',monospace;color:var(--moss);cursor:grab;user-select:none;transition:all .15s;">dejó de aumentar</div>
       </div>
 
-      <div class="grammar-example" style="margin:16px 0;">
-        <strong>Ejemplo:</strong> Venezuela y Colombia <strong>acaban de firmar</strong> un acuerdo de colaboración en la frontera.
+      <div style="margin:20px 0;">
+        <p style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mid);margin-bottom:12px;">Oraciones de contexto</p>
+        <ol style="list-style:decimal;padding-left:20px;display:flex;flex-direction:column;gap:10px;">
+          <li style="font-size:14px;">La economía regional <strong>sigue creciendo</strong> apenas 2,4% en 2025, reflejando estancamiento prolongado según organismos internacionales.</li>
+          <li style="font-size:14px;">La migración venezolana <strong>llegó a alcanzar</strong> más de 6,9 millones de personas desplazadas en América Latina recientemente.</li>
+          <li style="font-size:14px;">Muchos países <strong>van enfrentando</strong> presión migratoria creciente mientras los sistemas públicos muestran limitaciones para integrar a los recién llegados.</li>
+          <li style="font-size:14px;">El Salvador <strong>acabó reduciendo</strong> su tasa de homicidios a 1,36 por cada 100.000 habitantes en 2025.</li>
+          <li style="font-size:14px;">El gobierno salvadoreño <strong>comenzó a implementar</strong> medidas de seguridad masivas que transformaron la situación del crimen nacional.</li>
+          <li style="font-size:14px;">Argentina <strong>continúa enfrentando</strong> inflación extrema, superando el 200% anual durante 2024 y afectando gravemente el poder adquisitivo.</li>
+          <li style="font-size:14px;">En Bolivia, muchas comunidades <strong>siguen sin superar</strong> la pobreza, afectando aproximadamente a un tercio de la población nacional.</li>
+          <li style="font-size:14px;">Varias economías <strong>empiezan a diversificar</strong> sus sectores productivos para reducir la dependencia histórica de exportaciones de materias primas.</li>
+          <li style="font-size:14px;">La Amazonía brasileña <strong>lleva perdiendo</strong> millones de hectáreas durante años por deforestación ligada a ganadería y agricultura intensiva.</li>
+          <li style="font-size:14px;">Brasil <strong>dejó de aumentar</strong> la deforestación en 2023 tras políticas ambientales más estrictas y controles gubernamentales reforzados.</li>
+        </ol>
       </div>
 
-      <ul class="gram-list">
-        <li class="gram-item">
-          <div class="gram-letter">a</div>
-          <div class="gram-text">A pesar de los progresos, todavía millones de personas <input class="gram-blank" size="14" placeholder="perífrasis"> <input class="gram-blank" size="14" placeholder="verbo"> salir de la pobreza absoluta.</div>
-        </li>
-        <li class="gram-item">
-          <div class="gram-letter">b</div>
-          <div class="gram-text">Con pocas excepciones, las economías de América Latina <input class="gram-blank" size="12" placeholder="perífrasis"> unos cuantos años <input class="gram-blank" size="14" placeholder="verbo"> sin éxito de mantener los niveles de crecimiento que tuvieron hasta 2011.</div>
-        </li>
-        <li class="gram-item">
-          <div class="gram-letter">c</div>
-          <div class="gram-text">El suministro de agua <input class="gram-blank" size="20" placeholder="perífrasis + verbo"> pero todavía no llega a cubrir el 100% de la población.</div>
-        </li>
-        <li class="gram-item">
-          <div class="gram-letter">d</div>
-          <div class="gram-text">En 2010, 700 millones de personas <input class="gram-blank" size="20" placeholder="perífrasis + verbo"> en condiciones de extrema pobreza, en comparación con 1990.</div>
-        </li>
-        <li class="gram-item">
-          <div class="gram-letter">e</div>
-          <div class="gram-text">La deuda externa de los países latinoamericanos con la banca internacional <input class="gram-blank" size="20" placeholder="perífrasis + verbo"> insostenible e impagable.</div>
-        </li>
-        <li class="gram-item">
-          <div class="gram-letter">f</div>
-          <div class="gram-text">Se <input class="gram-blank" size="20" placeholder="perífrasis + verbo"> casos de violaciones a los derechos humanos de inmigrantes en las fronteras mexicanas.</div>
-        </li>
-        <li class="gram-item">
-          <div class="gram-letter">g</div>
-          <div class="gram-text">Muchos venezolanos <input class="gram-blank" size="20" placeholder="perífrasis + verbo"> del país por la crisis económica.</div>
-        </li>
-        <li class="gram-item">
-          <div class="gram-letter">h</div>
-          <div class="gram-text">Algunos países latinoamericanos <input class="gram-blank" size="20" placeholder="perífrasis + verbo"> una solución a su dependencia de materias primas.</div>
-        </li>
-        <li class="gram-item">
-          <div class="gram-letter">i</div>
-          <div class="gram-text">Si no <input class="gram-blank" size="20" placeholder="perífrasis + verbo"> medidas drásticas para controlar la inflación, nos enfrentaremos a otra crisis económica.</div>
-        </li>
-      </ul>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0;">
+        <div id="peri-final" style="background:var(--sand);border-radius:10px;padding:16px;border:2px dashed transparent;transition:border-color .2s;" ondragover="periAllowDrop(event)" ondrop="periDrop(event,'final')">
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--forest);margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid var(--forest);">🔚 Final de acción</div>
+          <div id="peri-final-zone" style="min-height:80px;display:flex;flex-direction:column;gap:6px;"></div>
+        </div>
+        <div id="peri-durativa" style="background:var(--sand);border-radius:10px;padding:16px;border:2px dashed transparent;transition:border-color .2s;" ondragover="periAllowDrop(event)" ondrop="periDrop(event,'durativa')">
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--moss);margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid var(--moss);">⏳ Acción durativa</div>
+          <div id="peri-durativa-zone" style="min-height:80px;display:flex;flex-direction:column;gap:6px;"></div>
+        </div>
+        <div id="peri-inicio" style="background:var(--sand);border-radius:10px;padding:16px;border:2px dashed transparent;transition:border-color .2s;" ondragover="periAllowDrop(event)" ondrop="periDrop(event,'inicio')">
+          <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid var(--gold);">🚀 Inicio de acción</div>
+          <div id="peri-inicio-zone" style="min-height:80px;display:flex;flex-direction:column;gap:6px;"></div>
+        </div>
+      </div>
+      <div>
+        <button class="check-btn" onclick="checkPeri()">✓ Comprobar clasificación</button>
+        <button class="reset-btn" onclick="resetPeri()">↺ Reiniciar</button>
+        <span id="scorePeri"></span>
+      </div>
     </div>
 
-    <!-- HOMEWORK -->
+        <!-- HOMEWORK -->
     <div class="homework-card">
       <h3>📝 Trabajo en Casa</h3>
       <p class="hw-intro">Como preparación para la prueba de escritura de la semana 12, escribe un texto de unas <strong>350 palabras</strong> resumiendo el contenido de los siguientes vídeos sobre ciudades sostenibles. Entrégaselo a tu profesor/a para recibir comentarios y correcciones.</p>
@@ -1640,11 +1669,11 @@
         </div>
         <div class="hw-video-card">
           <div class="hw-video-thumb">
-            <iframe src="https://www.youtube.com/embed/3m1Nauu3EQs" title="Ciudades Sostenibles Horacio Terraza" allowfullscreen loading="lazy"></iframe>
+            <iframe src="https://www.youtube.com/embed/2fn4NW4NWF4" title="Ciudades Sostenibles Horacio Terraza" allowfullscreen loading="lazy"></iframe>
           </div>
           <div class="hw-video-info">
-            <div class="hw-video-title">Ciudades Sostenibles — Horacio Terraza</div>
-            <div class="hw-video-sub">2'51" · Urbanismo y desarrollo</div>
+            <div class="hw-video-title">Ciudades Sostenibles del mundo: ¿Qué son?, ¿Cómo se construyen?</div>
+            <div class="hw-video-sub">2'27" · Urbanismo y desarrollo</div>
           </div>
         </div>
       </div>
@@ -1668,24 +1697,169 @@
 </main>
 
 <script>
-  function showSection(id) {
-    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-    event.target.classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+// ── TAB NAVIGATION ──
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(btn) btn.classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
 
-  function selectSector(btn) {
-    document.querySelectorAll('.sector-btn').forEach(b => b.classList.remove('selected'));
-    btn.classList.add('selected');
-  }
+// ── MISC ──
+function selectSector(btn) {
+  document.querySelectorAll('.sector-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+function toggleCheck(item) {
+  item.classList.toggle('checked');
+  item.querySelector('input[type="checkbox"]').checked = item.classList.contains('checked');
+}
 
-  function toggleCheck(item) {
-    item.classList.toggle('checked');
-    const cb = item.querySelector('input[type="checkbox"]');
-    cb.checked = !cb.checked;
+// ── SCORE HELPER ──
+function showScore(targetId, correct, total) {
+  const pct = correct/total;
+  const cls = pct>=0.8 ? 'score-good' : pct>=0.5 ? 'score-mid' : 'score-low';
+  const emoji = pct>=0.8 ? '🎉' : pct>=0.5 ? '💪' : '📖';
+  document.getElementById(targetId).innerHTML =
+    '<span style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:100px;font-size:14px;font-weight:700;margin-left:12px;" class="score-badge '+cls+'">'+emoji+' '+correct+'/'+total+'</span>';
+}
+
+// ── ACTIVITY 3A ──
+function check3a() {
+  let correct = 0;
+  ['b1','b2','b3','b4','b5','b6'].forEach(id => {
+    const el = document.getElementById(id);
+    el.style.removeProperty('background'); el.style.removeProperty('color'); el.style.removeProperty('border-bottom-color');
+    if(!el.value) return;
+    if(el.value === el.dataset.answer) {
+      el.style.background='rgba(45,122,61,.1)'; el.style.color='#2d7a3d'; el.style.borderBottomColor='#2d7a3d'; correct++;
+    } else {
+      el.style.background='rgba(192,57,43,.1)'; el.style.color='#c0392b'; el.style.borderBottomColor='#c0392b';
+    }
+  });
+  showScore('score3a', correct, 6);
+}
+function reset3a() {
+  ['b1','b2','b3','b4','b5','b6'].forEach(id => {
+    const el = document.getElementById(id); el.value='';
+    el.style.removeProperty('background'); el.style.removeProperty('color'); el.style.removeProperty('border-bottom-color');
+  });
+  document.getElementById('score3a').innerHTML='';
+}
+
+// ── ACTIVITY 3B ──
+function check3b() {
+  let correct = 0;
+  for(let i=1;i<=10;i++) {
+    const el = document.getElementById('syn'+i);
+    el.style.removeProperty('border-color'); el.style.removeProperty('background-color');
+    if(!el.value) continue;
+    if(el.value === el.dataset.answer) {
+      el.style.borderColor='#2d7a3d'; el.style.backgroundColor='rgba(45,122,61,.08)'; correct++;
+    } else {
+      el.style.borderColor='#c0392b'; el.style.backgroundColor='rgba(192,57,43,.08)';
+    }
   }
+  showScore('score3b', correct, 10);
+}
+function reset3b() {
+  for(let i=1;i<=10;i++) {
+    const el=document.getElementById('syn'+i); el.value='';
+    el.style.removeProperty('border-color'); el.style.removeProperty('background-color');
+  }
+  document.getElementById('score3b').innerHTML='';
+}
+
+// ── ACTIVITY 4: DIMENSION DRAG & DROP ──
+let dimDragEl = null;
+function dimDragStart(e) {
+  dimDragEl = e.currentTarget;
+  e.dataTransfer.setData('text/plain', e.currentTarget.dataset.id);
+  e.dataTransfer.effectAllowed = 'copy';
+}
+function dimAllowDrop(e) {
+  e.preventDefault();
+  e.currentTarget.style.borderColor = 'var(--leaf)';
+  e.currentTarget.style.background = 'rgba(74,140,92,0.08)';
+}
+function dimDrop(e, colId) {
+  e.preventDefault();
+  e.currentTarget.style.borderColor = 'transparent';
+  e.currentTarget.style.removeProperty('background');
+  if(!dimDragEl) return;
+  const col = document.getElementById(colId);
+  const zone = col.querySelector('.dim-drop-zone');
+  const wrap = document.createElement('div');
+  wrap.style.cssText = 'background:var(--white);border:1px solid var(--sand);border-radius:6px;padding:8px 10px;margin-bottom:6px;font-size:12px;display:flex;justify-content:space-between;align-items:flex-start;gap:6px;';
+  wrap.innerHTML = dimDragEl.innerHTML + '<button onclick="this.parentNode.remove()" style="background:none;border:none;color:var(--light);cursor:pointer;font-size:14px;line-height:1;flex-shrink:0;">×</button>';
+  zone.appendChild(wrap);
+}
+document.addEventListener('dragleave', function(e) {
+  if(e.target && e.target.id && e.target.id.startsWith('dim-')) {
+    e.target.style.borderColor='transparent'; e.target.style.removeProperty('background');
+  }
+});
+function resetDimensions() {
+  document.querySelectorAll('.dim-drop-zone').forEach(z => z.innerHTML='');
+}
+
+// ── ACTIVITY 11: PERIFRASIS DRAG ──
+let periDragEl = null;
+function periDragStart(e) {
+  periDragEl = e.currentTarget;
+  e.dataTransfer.effectAllowed = 'move';
+}
+function periAllowDrop(e) {
+  e.preventDefault();
+  e.currentTarget.style.borderColor = 'var(--leaf)';
+}
+function periDrop(e, category) {
+  e.preventDefault();
+  e.currentTarget.style.borderColor = 'transparent';
+  if(!periDragEl) return;
+  const zone = document.getElementById('peri-'+category+'-zone');
+  const chip = document.createElement('div');
+  chip.style.cssText = 'background:var(--white);border:1px solid var(--leaf);border-radius:6px;padding:6px 10px;font-size:13px;font-family:"DM Mono",monospace;color:var(--moss);display:flex;justify-content:space-between;align-items:center;gap:6px;';
+  chip.dataset.id = periDragEl.dataset.id;
+  chip.dataset.answer = periDragEl.dataset.answer;
+  chip.dataset.placed = category;
+  chip.innerHTML = periDragEl.textContent.trim() + '<button onclick="removePeriChip(this)" style="background:none;border:none;color:var(--light);cursor:pointer;font-size:14px;line-height:1;">×</button>';
+  zone.appendChild(chip);
+  periDragEl.style.opacity = '0.35';
+  periDragEl.style.pointerEvents = 'none';
+  periDragEl = null;
+}
+function removePeriChip(btn) {
+  const chip = btn.parentNode;
+  const id = chip.dataset.id;
+  chip.remove();
+  const src = document.querySelector('#periSource [data-id="'+id+'"]');
+  if(src) { src.style.opacity='1'; src.style.pointerEvents='auto'; }
+}
+function checkPeri() {
+  let correct=0, total=0;
+  ['final','durativa','inicio'].forEach(cat => {
+    document.querySelectorAll('#peri-'+cat+'-zone div').forEach(chip => {
+      if(!chip.dataset.placed) return;
+      total++;
+      chip.style.removeProperty('background'); chip.style.removeProperty('border-color'); chip.style.removeProperty('color');
+      if(chip.dataset.placed === chip.dataset.answer) {
+        chip.style.background='rgba(45,122,61,.15)'; chip.style.borderColor='#2d7a3d'; chip.style.color='#2d7a3d'; correct++;
+      } else {
+        chip.style.background='rgba(192,57,43,.12)'; chip.style.borderColor='#c0392b'; chip.style.color='#c0392b';
+      }
+    });
+  });
+  if(total>0) showScore('scorePeri', correct, total);
+  else document.getElementById('scorePeri').innerHTML='<span style="font-size:13px;color:var(--light);margin-left:12px;">Arrastra al menos una perífrasis primero.</span>';
+}
+function resetPeri() {
+  ['final','durativa','inicio'].forEach(cat => document.getElementById('peri-'+cat+'-zone').innerHTML='');
+  document.querySelectorAll('#periSource [data-id]').forEach(c => { c.style.opacity='1'; c.style.pointerEvents='auto'; });
+  document.getElementById('scorePeri').innerHTML='';
+  ['peri-final','peri-durativa','peri-inicio'].forEach(id => { const el=document.getElementById(id); if(el) el.style.borderColor='transparent'; });
+}
 </script>
 </body>
 </html>

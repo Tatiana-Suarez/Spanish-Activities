@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desarrollo Sostenible — Spanish for Business B2–C1</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1a3a2a;
+    --moss: #2d5a3d;
+    --leaf: #4a8c5c;
+    --sage: #7db88a;
+    --mist: #c8ddc8;
+    --cream: #f5f0e8;
+    --sand: #e8dfc8;
+    --gold: #c8973a;
+    --amber: #e8b84b;
+    --ink: #1a1a14;
+    --body: #2a2a20;
+    --mid: #5a5a48;
+    --light: #9a9a80;
+    --white: #fdfcf8;
+    --red: #c0392b;
+    --blue: #2980b9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--body);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--forest);
+    color: var(--white);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 80% 20%, rgba(74,140,92,0.25) 0%, transparent 55%),
+      radial-gradient(ellipse at 10% 80%, rgba(200,151,58,0.15) 0%, transparent 50%);
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 64px 40px 56px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(74,140,92,0.25);
+    border: 1px solid rgba(125,184,138,0.4);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 28px;
+  }
+
+  .hero-badge span { color: var(--amber); }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .hero-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--sage);
+    margin-bottom: 32px;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    font-size: 13px;
+    color: var(--mist);
+  }
+
+  .hero-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hero-meta-item svg { color: var(--amber); flex-shrink: 0; }
+
+  /* ── SESSION TABS ── */
+  .session-nav {
+    background: var(--moss);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+  }
+
+  .session-nav-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .session-nav-inner::-webkit-scrollbar { display: none; }
+
+  .tab-btn {
+    padding: 16px 24px;
+    background: none;
+    border: none;
+    color: var(--mist);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .tab-btn:hover { color: var(--white); }
+  .tab-btn.active { color: var(--amber); border-bottom-color: var(--amber); }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 48px 40px 80px;
+  }
+
+  .section { display: none; }
+  .section.active { display: block; animation: fadeIn 0.3s ease; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* ── OUTCOMES SECTION ── */
+  .outcomes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+  }
+
+  .outcome-card {
+    background: var(--white);
+    border: 1px solid var(--sand);
+    border-radius: 12px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .outcome-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+
+  .outcome-card.topic::before { background: linear-gradient(90deg, var(--leaf), var(--sage)); }
+  .outcome-card.communication::before { background: linear-gradient(90deg, var(--gold), var(--amber)); }
+  .outcome-card.structure::before { background: linear-gradient(90deg, var(--moss), var(--leaf)); }
+
+  .outcome-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .topic .outcome-icon { background: rgba(74,140,92,0.12); }
+  .communication .outcome-icon { background: rgba(200,151,58,0.12); }
+  .structure .outcome-icon { background: rgba(45,90,61,0.12); }
+
+  .outcome-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--forest);
+  }
+
+  .outcome-card ul { list-style: none; }
+  .outcome-card ul li {
+    font-size: 14px;
+    padding: 5px 0;
+    padding-left: 18px;
+    position: relative;
+    color: var(--body);
+    border-bottom: 1px solid var(--sand);
+  }
+  .outcome-card ul li:last-child { border-bottom: none; }
+  .outcome-card ul li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--leaf);
+    font-size: 12px;
+  }
+
+  /* ── ACTIVITY BLOCK ── */
+  .activity {
+    background: var(--white);
+    border: 1px solid var(--sand);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 28px;
+  }
+
+  .activity-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .activity-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--mist);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 40px;
+  }
+
+  .activity-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--forest);
+  }
+
+  .activity-subtitle {
+    font-size: 13px;
+    color: var(--light);
+    margin-top: 2px;
+    font-style: italic;
+  }
+
+  .skill-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0 4px 6px 0;
+  }
+
+  .tag-speaking { background: rgba(200,151,58,0.12); color: #8a6010; }
+  .tag-vocabulary { background: rgba(74,140,92,0.12); color: #2d5a3d; }
+  .tag-listening { background: rgba(41,128,185,0.12); color: #1a5a8a; }
+  .tag-grammar { background: rgba(142,68,173,0.12); color: #5a2d6a; }
+  .tag-writing { background: rgba(192,57,43,0.12); color: #8a2010; }
+  .tag-reading { background: rgba(26,163,131,0.12); color: #0d5a48; }
+
+  /* ── INSTRUCTIONS ── */
+  .instruction {
+    background: rgba(74,140,92,0.06);
+    border-left: 3px solid var(--leaf);
+    border-radius: 0 8px 8px 0;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: var(--body);
+    font-style: italic;
+  }
+
+  /* ── WORD BANK ── */
+  .word-bank {
+    background: var(--sand);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+
+  .word-bank-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--light);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .word-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .chip {
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 13px;
+    font-family: 'DM Mono', monospace;
+    color: var(--body);
+  }
+
+  /* ── TABLES ── */
+  .styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin: 16px 0;
+  }
+
+  .styled-table th {
+    background: var(--forest);
+    color: var(--white);
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+  }
+
+  .styled-table th:first-child { border-radius: 8px 0 0 0; }
+  .styled-table th:last-child { border-radius: 0 8px 0 0; }
+
+  .styled-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--sand);
+    vertical-align: top;
+  }
+
+  .styled-table tr:nth-child(even) td { background: rgba(200,220,200,0.08); }
+  .styled-table tr:last-child td { border-bottom: none; }
+
+  .styled-table textarea, .styled-table input[type="text"] {
+    width: 100%;
+    border: 1px solid var(--sand);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    background: var(--white);
+    color: var(--body);
+    resize: vertical;
+    min-height: 60px;
+    transition: border-color 0.2s;
+  }
+
+  .styled-table textarea:focus, .styled-table input[type="text"]:focus {
+    outline: none;
+    border-color: var(--leaf);
+    box-shadow: 0 0 0 3px rgba(74,140,92,0.12);
+  }
+
+  /* ── VOCAB MATCH ── */
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 8px 16px;
+    align-items: center;
+    margin: 16px 0;
+  }
+
+  .vocab-word {
+    background: var(--sand);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .vocab-arrow { color: var(--light); font-size: 18px; text-align: center; }
+
+  .vocab-select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--sand);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    background: var(--white);
+    color: var(--body);
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239a9a80' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+  }
+
+  .vocab-select:focus {
+    outline: none;
+    border-color: var(--leaf);
+    box-shadow: 0 0 0 3px rgba(74,140,92,0.12);
+  }
+
+  /* ── CLASSIFICATION GRID ── */
+  .classify-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 16px 0;
+  }
+
+  .classify-col {
+    background: var(--sand);
+    border-radius: 10px;
+    padding: 16px;
+    min-height: 120px;
+  }
+
+  .classify-col-title {
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid rgba(0,0,0,0.1);
+  }
+
+  .classify-col.pos .classify-col-title { color: #2d7a3d; border-color: #2d7a3d; }
+  .classify-col.neg .classify-col-title { color: #c0392b; border-color: #c0392b; }
+  .classify-col.dep .classify-col-title { color: #c8973a; border-color: #c8973a; }
+
+  .classify-col textarea {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--body);
+    resize: none;
+    min-height: 80px;
+  }
+  .classify-col textarea:focus { outline: none; }
+
+  /* ── VIDEO CARDS ── */
+  .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 20px 0; }
+
+  .video-card {
+    background: var(--white);
+    border: 1px solid var(--sand);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .video-thumb {
+    position: relative;
+    background: var(--forest);
+    padding-top: 56.25%;
+  }
+
+  .video-thumb iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .video-info { padding: 20px; }
+  .video-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--light);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .video-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--forest);
+    margin-bottom: 4px;
+  }
+
+  .video-duration { font-size: 12px; color: var(--light); }
+
+  .video-table { margin-top: 16px; }
+
+  /* ── DISCUSSION ── */
+  .discussion-list { list-style: none; }
+  .discussion-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--sand);
+  }
+  .discussion-item:last-child { border-bottom: none; }
+
+  .disc-num {
+    width: 28px; height: 28px;
+    background: var(--forest);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .discussion-item p { font-size: 14px; color: var(--body); flex: 1; }
+
+  .agree-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .agree-box { background: var(--sand); border-radius: 10px; padding: 14px; }
+  .agree-box-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .agree-box textarea {
+    width: 100%; border: none; background: transparent;
+    font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--body);
+    resize: none; min-height: 80px;
+  }
+  .agree-box textarea:focus { outline: none; }
+
+  /* ── CASE STUDY ── */
+  .case-text {
+    background: var(--sand);
+    border-radius: 10px;
+    padding: 24px;
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 16px 0;
+  }
+
+  .highlight { background: rgba(74,140,92,0.2); border-radius: 3px; padding: 1px 4px; font-weight: 600; }
+
+  .case-vocab { margin-top: 20px; }
+  .vocab-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--sand);
+  }
+  .vocab-row:last-child { border-bottom: none; }
+  .vocab-term { font-weight: 600; min-width: 160px; font-size: 14px; color: var(--forest); }
+  .vocab-colon { color: var(--light); }
+  .vocab-row input {
+    flex: 1;
+    border: 1px solid var(--sand);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    background: var(--white);
+  }
+  .vocab-row input:focus { outline: none; border-color: var(--leaf); box-shadow: 0 0 0 3px rgba(74,140,92,0.12); }
+
+  /* ── COMPANY BUILDER ── */
+  .company-builder {
+    background: linear-gradient(135deg, var(--forest) 0%, var(--moss) 100%);
+    border-radius: 16px;
+    padding: 32px;
+    color: var(--white);
+    margin: 20px 0;
+  }
+
+  .company-builder h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+  }
+
+  .company-builder p { font-size: 14px; color: var(--mist); margin-bottom: 24px; }
+
+  .company-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+
+  .company-field label { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--sage); margin-bottom: 6px; font-weight: 600; }
+
+  .company-field input, .company-field select, .company-field textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+  }
+
+  .company-field input::placeholder { color: rgba(255,255,255,0.4); }
+  .company-field input:focus, .company-field select:focus, .company-field textarea:focus {
+    outline: none;
+    border-color: var(--amber);
+    background: rgba(255,255,255,0.15);
+  }
+
+  .company-field select option { background: var(--forest); color: var(--white); }
+
+  .sector-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+
+  .sector-btn {
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    color: var(--mist);
+    font-size: 13px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .sector-btn.selected { background: var(--amber); border-color: var(--amber); color: var(--forest); font-weight: 600; }
+
+  .principles-check { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; margin-top: 16px; }
+
+  .check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .check-item:hover { background: rgba(255,255,255,0.1); }
+  .check-item.checked { background: rgba(74,140,92,0.25); border-color: var(--sage); }
+
+  .check-item input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--sage); flex-shrink: 0; }
+  .check-item label { font-size: 13px; color: var(--mist); cursor: pointer; }
+  .check-item.checked label { color: var(--white); }
+
+  /* ── GRAMMAR ── */
+  .perifr-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .perifr-table th { background: var(--moss); color: var(--white); padding: 10px 16px; text-align: left; font-size: 13px; }
+  .perifr-table td { padding: 12px 16px; border-bottom: 1px solid var(--sand); vertical-align: top; }
+  .perifr-table tr:last-child td { border-bottom: none; }
+  .perifr-table .perifrasis { font-family: 'DM Mono', monospace; font-size: 13px; background: rgba(74,140,92,0.1); padding: 4px 8px; border-radius: 4px; display: inline-block; }
+
+  .section-divider {
+    background: var(--sand);
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--mid);
+    margin: 20px 0 12px;
+  }
+
+  .grammar-exercise { margin: 20px 0; }
+  .grammar-example {
+    background: rgba(74,140,92,0.08);
+    border: 1px dashed var(--sage);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  .grammar-example strong { color: var(--moss); }
+
+  .gram-list { list-style: none; }
+  .gram-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--sand);
+  }
+  .gram-item:last-child { border-bottom: none; }
+  .gram-letter {
+    width: 28px; height: 28px;
+    background: var(--sand);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: var(--mid);
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .gram-text { flex: 1; font-size: 14px; }
+  .gram-blank {
+    display: inline-block;
+    border-bottom: 2px solid var(--leaf);
+    min-width: 120px;
+    margin: 0 4px;
+    padding: 2px 4px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    background: rgba(74,140,92,0.05);
+    border-radius: 3px 3px 0 0;
+    outline: none;
+    color: var(--moss);
+  }
+  .gram-blank:focus { background: rgba(74,140,92,0.12); }
+
+  /* ── HOMEWORK ── */
+  .homework-card {
+    background: linear-gradient(135deg, #1a3a2a 0%, #2d5a3d 100%);
+    border-radius: 16px;
+    padding: 36px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .homework-card::after {
+    content: '✍';
+    position: absolute;
+    right: 32px; top: 24px;
+    font-size: 60px;
+    opacity: 0.1;
+  }
+
+  .homework-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+  .homework-card .hw-intro { color: var(--mist); font-size: 14px; margin-bottom: 24px; }
+
+  .hw-videos { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 28px; }
+  .hw-video-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .hw-video-thumb { position: relative; padding-top: 56.25%; background: rgba(0,0,0,0.3); }
+  .hw-video-thumb iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+  .hw-video-info { padding: 14px 16px; }
+  .hw-video-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+  .hw-video-sub { font-size: 12px; color: var(--sage); }
+
+  .hw-tips { background: rgba(255,255,255,0.06); border-radius: 10px; padding: 20px 24px; }
+  .hw-tips h4 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--amber); margin-bottom: 12px; }
+  .hw-tips ul { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px; }
+  .hw-tips li { font-size: 13px; color: var(--mist); padding-left: 16px; position: relative; }
+  .hw-tips li::before { content: '✓'; position: absolute; left: 0; color: var(--sage); font-size: 11px; top: 1px; }
+
+  /* ── SECTION TITLES ── */
+  .sec-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--sand);
+  }
+
+  .sec-icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .sec-head h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--forest);
+    line-height: 1.2;
+  }
+
+  .sec-head .sec-desc { font-size: 13px; color: var(--light); margin-top: 3px; }
+
+  /* ── FILL IN BLANKS ── */
+  .blank-text {
+    font-size: 14px;
+    line-height: 2.2;
+    margin: 16px 0;
+    background: var(--sand);
+    border-radius: 10px;
+    padding: 20px 24px;
+  }
+  .blank-input {
+    display: inline-block;
+    border: none;
+    border-bottom: 2px solid var(--leaf);
+    background: transparent;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--moss);
+    padding: 1px 6px;
+    min-width: 100px;
+    outline: none;
+    border-radius: 3px 3px 0 0;
+  }
+  .blank-input:focus { background: rgba(74,140,92,0.1); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .hero-inner, .main { padding: 32px 20px; }
+    .agree-row { grid-template-columns: 1fr; }
+    .vocab-grid { grid-template-columns: 1fr; }
+    .vocab-arrow { display: none; }
+    .agree-row { grid-template-columns: 1fr; }
+  }
+
+  /* ── CLASSIFICATION DRAG ── */
+  .principles-list { list-style: none; }
+  .principle-item {
+    font-size: 13px;
+    padding: 10px 14px;
+    background: var(--white);
+    border: 1px solid var(--sand);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .principle-item:hover { border-color: var(--leaf); background: rgba(74,140,92,0.04); }
+
+  .dim-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; margin: 16px 0; }
+  .dim-col { background: var(--sand); border-radius: 10px; padding: 16px; }
+  .dim-col-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--mid); margin-bottom: 10px; border-bottom: 2px solid var(--mid); padding-bottom: 6px; }
+  .dim-col textarea { width: 100%; border: none; background: transparent; font-family: 'DM Sans', sans-serif; font-size: 13px; color: var(--body); resize: none; min-height: 100px; }
+  .dim-col textarea:focus { outline: none; }
+
+  .company-textarea { grid-column: 1 / -1; }
+  .company-field textarea { resize: vertical; min-height: 80px; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M6 3v3l2 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span>Spanish for Business</span> · B2–C1 · 3 Sessions
+    </div>
+    <h1>Desarrollo Sostenible</h1>
+    <div class="hero-sub">Medio Ambiente, Empresas y Ciudades del Futuro</div>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M4 1v2M10 1v2M1 5.5h12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        3 sessions · ~90 min each
+      </div>
+      <div class="hero-meta-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1a6 6 0 100 12A6 6 0 007 1z" stroke="currentColor" stroke-width="1.3"/><path d="M7 4v3l2.5 2.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        Topic: Sustainable Development · Latin America
+      </div>
+      <div class="hero-meta-item">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 10L5 7l2.5 2.5L12 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Skills: Speaking · Vocabulary · Listening · Grammar · Writing
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- NAV TABS -->
+<nav class="session-nav">
+  <div class="session-nav-inner">
+    <button class="tab-btn active" onclick="showSection('outcomes')">🎯 Learning Outcomes</button>
+    <button class="tab-btn" onclick="showSection('session1')">Session 1 · Vocabulary & Concepts</button>
+    <button class="tab-btn" onclick="showSection('session2')">Session 2 · Business & Case Studies</button>
+    <button class="tab-btn" onclick="showSection('session3')">Session 3 · Grammar & Writing</button>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- ── LEARNING OUTCOMES ── -->
+  <section id="outcomes" class="section active">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:rgba(74,140,92,0.12);">🎯</div>
+      <div>
+        <h2>Learning Outcomes</h2>
+        <div class="sec-desc">By the end of these three sessions, students will be able to…</div>
+      </div>
+    </div>
+
+    <div class="outcomes-grid">
+      <div class="outcome-card topic">
+        <div class="outcome-icon">🌱</div>
+        <h3>Topic Knowledge</h3>
+        <ul>
+          <li>Define sustainability and distinguish its environmental, social, economic, political and cultural dimensions</li>
+          <li>Identify industries and business practices that support or threaten sustainable development in Latin America</li>
+          <li>Analyse real-world case studies of sustainable enterprises and classify them by impact area</li>
+          <li>Evaluate the role of private companies, SMEs and multinationals in sustainable development</li>
+          <li>Discuss the concept of sustainable cities and urban development challenges</li>
+        </ul>
+      </div>
+
+      <div class="outcome-card communication">
+        <div class="outcome-icon">💬</div>
+        <h3>Communication Skills</h3>
+        <ul>
+          <li>Express and justify opinions on controversial business and environmental statements</li>
+          <li>Participate in group discussions using evidence and examples in Spanish</li>
+          <li>Present a creative business proposal applying sustainability principles to a chosen sector</li>
+          <li>Understand authentic Spanish-language audiovisual content on environmental topics</li>
+          <li>Write a structured analytical summary (350 words) synthesising information from video sources</li>
+        </ul>
+      </div>
+
+      <div class="outcome-card structure">
+        <div class="outcome-icon">📐</div>
+        <h3>Formal Language Structures</h3>
+        <ul>
+          <li>Use a range of <em>perífrasis verbales</em> (verbal periphrases) accurately: <em>acabar de</em>, <em>dejar de</em>, <em>llevar + gerundio</em>, <em>seguir + gerundio</em>, <em>ir + gerundio</em>, and more</li>
+          <li>Distinguish and correctly apply infinitive vs. gerund constructions in context</li>
+          <li>Deploy topic-specific vocabulary with precision: synonyms, definitions, and collocations</li>
+          <li>Structure written compositions with coherent paragraphs, avoiding bullet points and using discourse connectors</li>
+          <li>Demonstrate accurate use of <em>ser/estar</em>, <em>por/para</em>, and preterite/imperfect in extended writing</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SESSION 1 ── -->
+  <section id="session1" class="section">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:rgba(74,140,92,0.12);">🌿</div>
+      <div>
+        <h2>Session 1 · Vocabulary &amp; Concepts</h2>
+        <div class="sec-desc">Brainstorming · Definitions · Classification · Listening</div>
+      </div>
+    </div>
+
+    <!-- ACTIVITY 1 -->
+    <div class="activity">
+      <div class="activity-header">
+        <div class="activity-num">1</div>
+        <div>
+          <div class="activity-title">Lluvia de Ideas — Brainstorming</div>
+          <div class="activity-subtitle">Warm-up discussion · Individual then pairs</div>
+          <div style="margin-top:8px;">
+            <span class="skill-tag tag-speaking">🗣 Speaking</span>
+            <span class="skill-tag tag-vocabulary">📚 Vocabulary</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="instruction">Reflexiona sobre las siguientes preguntas individualmente. Luego compara tus respuestas con un/a compañero/a.</div>
+
+      <div style="margin-bottom:16px;">
+        <p style="font-size:14px;margin-bottom:8px;font-weight:600;">a) ¿Qué entiendes por sostenibilidad?</p>
+        <textarea rows="3" style="width:100%;border:1px solid var(--sand);border-radius:8px;padding:12px;font-family:'DM Sans',sans-serif;font-size:14px;resize:vertical;" placeholder="Escribe tus ideas aquí…"></textarea>
+      </div>
+
+      <div>
+        <p style="font-size:14px;margin-bottom:8px;font-weight:600;">b) Normalmente hablamos de sostenibilidad ambiental, pero ¿qué otros tipos de sostenibilidad existen?</p>
+        <textarea rows="3" style="width:100%;border:1px solid var(--sand);border-radius:8px;padding:12px;font-family:'DM Sans',sans-serif;font-size:14px;resize:vertical;" placeholder="Escribe tus ideas aquí…"></textarea>
+      </div>
+    </div>
+
+    <!-- ACTIVITY 2 -->
+    <div class="activity">
+      <div class="activity-header">
+        <div class="activity-num">2</div>
+        <div>
+          <div class="activity-title">Positivo, Negativo o ¿Depende?</div>
+          <div class="activity-subtitle">Classify key terms · Group discussion</div>
+          <div style="margin-top:8px;">
+            <span class="skill-tag tag-speaking">🗣 Speaking</span>
+            <span class="skill-tag tag-vocabulary">📚 Vocabulary</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="instruction">¿Qué palabras crees que son positivas o negativas para el desarrollo sostenible? Anota tus ideas en las columnas y discútelas en grupos.</div>
+
+      <div class="word-bank">
+        <div class="word-bank-label">Términos para clasificar</div>
+        <div class="word-chips">
+          <span class="chip">Acumulación de tierra</span>
+          <span class="chip">Analfabetismo</span>
+          <span class="chip">Censura a los medios</span>
+          <span class="chip">Deforestación</span>
+          <span class="chip">Degradación ambiental</span>
+          <span class="chip">Desertización</span>
+          <span class="chip">Desplazamiento forzoso</span>
+          <span class="chip">Emisión de carbono</span>
+          <span class="chip">Energía limpia</span>
+          <span class="chip">Equidad de género</span>
+          <span class="chip">Explosión demográfica</span>
+          <span class="chip">Extractivismo</span>
+          <span class="chip">Híper-consumo</span>
+          <span class="chip">Indigencia</span>
+          <span class="chip">Minería de gran escala</span>
+          <span class="chip">Políticas redistributivas</span>
+          <span class="chip">Protección del medio ambiente</span>
+          <span class="chip">Represión política</span>
+          <span class="chip">Respeto a la diversidad cultural</span>
+          <span class="chip">Economía regulada por los mercados</span>
+          <span class="chip">Educación ambiental</span>
+        </div>
+      </div>
+
+      <div class="agree-row" style="grid-template-columns:repeat(3,1fr);">
+        <div class="agree-box" style="background:rgba(45,122,61,0.08);border:1px solid rgba(45,122,61,0.2);">
+          <div class="agree-box-title" style="color:#2d7a3d;">✓ Positivo</div>
+          <textarea placeholder="Escribe aquí…"></textarea>
+        </div>
+        <div class="agree-box" style="background:rgba(192,57,43,0.08);border:1px solid rgba(192,57,43,0.2);">
+          <div class="agree-box-title" style="color:#c0392b;">✗ Negativo</div>
+          <textarea placeholder="Escribe aquí…"></textarea>
+        </div>
+        <div class="agree-box" style="background:rgba(200,151,58,0.08);border:1px solid rgba(200,151,58,0.2);">
+          <div class="agree-box-title" style="color:#8a6010;">? Depende</div>
+          <textarea placeholder="Escribe aquí…"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTIVITY 3 -->
+    <div class="activity">
+      <div class="activity-header">
+        <div class="activity-num">3</div>
+        <div>
+          <div class="activity-title">¿Qué es sostenibilidad? — Vocabulario</div>
+          <div class="activity-subtitle">Two-part vocabulary exercise</div>
+          <div style="margin-top:8px;">
+            <span class="skill-tag tag-vocabulary">📚 Vocabulary</span>
+            <span class="skill-tag tag-reading">📖 Reading</span>
+          </div>
+        </div>
+      </div>
+
+      <p style="font-size:14px;font-weight:600;margin-bottom:12px;">A) Completa la definición de sostenibilidad con las palabras del recuadro. <em>Atención</em>: hay tres palabras que no corresponden al texto.</p>
+
+      <div class="word-bank" style="margin-bottom:20px;">
+        <div class="word-bank-label">Banco de palabras</div>
+        <div class="word-chips">
+          <span class="chip">entorno</span>
+          <span class="chip">concepto</span>
+          <span class="chip">problema</span>
+          <span class="chip">comprometer</span>
+          <span class="chip">satisfacer</span>
+          <span class="chip">económico</span>
+          <span class="chip">aumentar</span>
+          <span class="chip">condiciones</span>
+          <span class="chip">demográfico</span>
+        </div>
+      </div>
+
+      <div class="blank-text">
+        La sostenibilidad es un <input class="blank-input" placeholder="[1]" size="10"> que se refiere a la importancia de atender nuestras necesidades actuales sin <input class="blank-input" placeholder="[2]" size="12"> la capacidad de las generaciones futuras de <input class="blank-input" placeholder="[3]" size="10"> las suyas, garantizando el equilibrio entre crecimiento <input class="blank-input" placeholder="[4]" size="10">, cuidado del medio ambiente y bienestar social. La sostenibilidad se basa en la existencia de <input class="blank-input" placeholder="[5]" size="12"> económicas, ecológicas, sociales y políticas que regulen la acción del hombre en relación con su <input class="blank-input" placeholder="[6]" size="10"> de forma equilibrada.
+        <div style="margin-top:14px;font-size:12px;color:var(--light);font-style:italic;">Fuente: Informe de la Comisión Brundtland, 1987</div>
+      </div>
+
+      <p style="font-size:14px;font-weight:600;margin:20px 0 12px;">B) Relaciona cada palabra con su sinónimo.</p>
+
+      <div class="vocab-grid">
+        <div class="vocab-word">ambiente</div><div class="vocab-arrow">→</div>
+        <select class="vocab-select"><option value="">Elige un sinónimo…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>solucionar</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
+
+        <div class="vocab-word">apoyar</div><div class="vocab-arrow">→</div>
+        <select class="vocab-select"><option value="">Elige un sinónimo…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>solucionar</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
+
+        <div class="vocab-word">congruente</div><div class="vocab-arrow">→</div>
+        <select class="vocab-select"><option value="">Elige un sinónimo…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>solucionar</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
+
+        <div class="vocab-word">descuidar</div><div class="vocab-arrow">→</div>
+        <select class="vocab-select"><option value="">Elige un sinónimo…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>solucionar</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
+
+        <div class="vocab-word">equitativo</div><div class="vocab-arrow">→</div>
+        <select class="vocab-select"><option value="">Elige un sinónimo…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>solucionar</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
+
+        <div class="vocab-word">interactuar</div><div class="vocab-arrow">→</div>
+        <select class="vocab-select"><option value="">Elige un sinónimo…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>solucionar</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
+
+        <div class="vocab-word">preservar</div><div class="vocab-arrow">→</div>
+        <select class="vocab-select"><option value="">Elige un sinónimo…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>solucionar</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
+
+        <div class="vocab-word">riqueza</div><div class="vocab-arrow">→</div>
+        <select class="vocab-select"><option value="">Elige un sinónimo…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>solucionar</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
+
+        <div class="vocab-word">solvencia</div><div class="vocab-arrow">→</div>
+        <select class="vocab-select"><option value="">Elige un sinónimo…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>solucionar</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
+
+        <div class="vocab-word">tratado</div><div class="vocab-arrow">→</div>
+        <select class="vocab-select"><option value="">Elige un sinónimo…</option><option>capital</option><option>ecuánime</option><option>desatender</option><option>entorno</option><option>conservar</option><option>capacidad</option><option>solucionar</option><option>coherente</option><option>acuerdo</option><option>respaldar</option><option>participar</option></select>
+      </div>
+    </div>
+
+    <!-- ACTIVITY 4 -->
+    <div class="activity">
+      <div class="activity-header">
+        <div class="activity-num">4</div>
+        <div>
+          <div class="activity-title">Dimensiones de la Sostenibilidad</div>
+          <div class="activity-subtitle">Classify sustainability principles by dimension</div>
+          <div style="margin-top:8px;">
+            <span class="skill-tag tag-vocabulary">📚 Vocabulary</span>
+            <span class="skill-tag tag-speaking">🗣 Speaking</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="instruction">Agrupa los siguientes principios de acuerdo con la dimensión de sostenibilidad a la que pertenecen: <strong>ambiental, social, económica, política, cultural</strong>, etc. Algunos conceptos se aplican a más de una categoría.</div>
+
+      <div style="background:rgba(74,140,92,0.08);border-radius:8px;padding:14px 18px;margin-bottom:16px;font-size:13px;">
+        <strong>Ejemplo — Ambiental:</strong> Mantener los aspectos biológicos en su productividad y diversidad a lo largo del tiempo.
+      </div>
+
+      <div style="font-size:14px;margin-bottom:16px;"><strong>Principios a clasificar:</strong></div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;margin-bottom:20px;">
+        <div class="principle-item">Generar riqueza en forma adecuada y equitativa en distintos ámbitos sociales.</div>
+        <div class="principle-item">Fomentar el desarrollo humano sin descuidar el ambiente donde se vive.</div>
+        <div class="principle-item">Ocuparse por la preservación de los recursos naturales fomentando una responsabilidad consciente sobre lo ecológico.</div>
+        <div class="principle-item">Fortalecer la producción y el consumo sin afectar la solvencia económica de la población.</div>
+        <div class="principle-item">Redistribuir el poder político con reglas congruentes, un gobierno seguro y un marco jurídico que garantice el respeto a los derechos civiles.</div>
+        <div class="principle-item">Generar estructuras democráticas que fomenten relaciones solidarias entre comunidades y regiones.</div>
+        <div class="principle-item">Perseguir la equidad de todos los estratos sociales para que se beneficien de las virtudes del crecimiento económico.</div>
+        <div class="principle-item">Satisfacer las necesidades básicas del individuo, establecidas en los principios generales de los tratados internacionales sobre los derechos humanos.</div>
+        <div class="principle-item">Apoyar acciones útiles a la conservación de las tradiciones y de los derechos de las comunidades regionales sobre el territorio que se habita.</div>
+        <div class="principle-item">Mantener niveles armónicos y satisfactorios de acceso a sistemas de protección social como vivienda, educación, salud, etc.</div>
+        <div class="principle-item">Ejercer el derecho a expresar diferentes ideologías y la posibilidad de los ciudadanos de interactuar en los procesos electivos de gobiernos y sistemas jurídicos.</div>
+      </div>
+
+      <div class="dim-grid">
+        <div class="dim-col"><div class="dim-col-title">🌱 Ambiental</div><textarea placeholder="Escribe aquí…"></textarea></div>
+        <div class="dim-col"><div class="dim-col-title">👥 Social</div><textarea placeholder="Escribe aquí…"></textarea></div>
+        <div class="dim-col"><div class="dim-col-title">💰 Económica</div><textarea placeholder="Escribe aquí…"></textarea></div>
+        <div class="dim-col"><div class="dim-col-title">🏛 Política</div><textarea placeholder="Escribe aquí…"></textarea></div>
+        <div class="dim-col"><div class="dim-col-title">🎭 Cultural</div><textarea placeholder="Escribe aquí…"></textarea></div>
+      </div>
+    </div>
+
+    <!-- ACTIVITY 5 -->
+    <div class="activity">
+      <div class="activity-header">
+        <div class="activity-num">5</div>
+        <div>
+          <div class="activity-title">Industrias y Sostenibilidad — Comprensión Auditiva</div>
+          <div class="activity-subtitle">Three video-based listening tasks</div>
+          <div style="margin-top:8px;">
+            <span class="skill-tag tag-listening">👂 Listening</span>
+            <span class="skill-tag tag-speaking">🗣 Speaking</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="instruction">Estos videos describen tres industrias que presentan riesgos para el medio ambiente y la sostenibilidad social, económica y cultural. Completa la tabla con la información que escuches.</div>
+
+      <!-- Video 1 -->
+      <div style="margin-bottom:28px;">
+        <div class="video-grid">
+          <div class="video-card">
+            <div class="video-thumb">
+              <iframe src="https://www.youtube.com/embed/-r5JFt1niEg" title="Video 1: Industria y sostenibilidad" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="video-info">
+              <div class="video-label">Video 1 · 2'43"</div>
+              <div class="video-title">Industria en América Latina</div>
+            </div>
+          </div>
+        </div>
+        <table class="styled-table" style="margin-top:16px;">
+          <thead><tr><th colspan="2">Video 1 — Preguntas de comprensión</th></tr></thead>
+          <tbody>
+            <tr><td style="width:40%;font-weight:500;">País, región e industria</td><td><textarea rows="2" placeholder="Escribe aquí…"></textarea></td></tr>
+            <tr><td style="font-weight:500;">Población afectada</td><td><textarea rows="2" placeholder="Escribe aquí…"></textarea></td></tr>
+            <tr><td style="font-weight:500;">Principales problemas descritos</td><td><textarea rows="3" placeholder="Escribe aquí…"></textarea></td></tr>
+            <tr><td style="font-weight:500;">Importancia para la economía del país</td><td><textarea rows="2" placeholder="Escribe aquí…"></textarea></td></tr>
+            <tr><td style="font-weight:500;">Tipos de sostenibilidad afectados</td><td><textarea rows="2" placeholder="Escribe aquí…"></textarea></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Video 2 -->
+      <div style="margin-bottom:28px;">
+        <div class="video-grid">
+          <div class="video-card">
+            <div class="video-thumb">
+              <iframe src="https://www.youtube.com/embed/nYDXORJU5UM" title="Video 2: Santander Colombia" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="video-info">
+              <div class="video-label">Video 2 · 2'01"</div>
+              <div class="video-title">Departamento de Santander, Colombia</div>
+            </div>
+          </div>
+        </div>
+        <table class="styled-table" style="margin-top:16px;">
+          <thead><tr><th colspan="2">Video 2 — Preguntas de comprensión</th></tr></thead>
+          <tbody>
+            <tr><td style="width:40%;font-weight:500;">País, región e industria</td><td><input type="text" value="Departamento de Santander, al oriente de Colombia. Industria: " placeholder="Completa…"></td></tr>
+            <tr><td style="font-weight:500;">Ventajas de este sector</td><td><textarea rows="2" placeholder="Escribe aquí…"></textarea></td></tr>
+            <tr><td style="font-weight:500;">Desventajas</td><td><textarea rows="2" placeholder="Escribe aquí…"></textarea></td></tr>
+            <tr><td style="font-weight:500;">Medidas necesarias para mejorar la sostenibilidad</td><td><textarea rows="3" placeholder="Escribe aquí…"></textarea></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Video 3 -->
+      <div>
+        <div class="video-grid">
+          <div class="video-card">
+            <div class="video-thumb">
+              <iframe src="https://www.youtube.com/embed/iFFPSxfSSbs" title="Video 3: Sostenibilidad" allowfullscreen loading="lazy"></iframe>
+            </div>
+            <div class="video-info">
+              <div class="video-label">Video 3 · 2'56"</div>
+              <div class="video-title">Sostenibilidad e industria</div>
+            </div>
+          </div>
+        </div>
+        <table class="styled-table" style="margin-top:16px;">
+          <thead><tr><th colspan="2">Video 3 — Preguntas de comprensión</th></tr></thead>
+          <tbody>
+            <tr><td style="width:40%;font-weight:500;">País, región e industria</td><td><textarea rows="2" placeholder="Escribe aquí…"></textarea></td></tr>
+            <tr><td style="font-weight:500;">Población afectada</td><td><textarea rows="2" placeholder="Escribe aquí…"></textarea></td></tr>
+            <tr><td style="font-weight:500;">Principales problemas descritos</td><td><textarea rows="3" placeholder="Escribe aquí…"></textarea></td></tr>
+            <tr><td style="font-weight:500;">Tipos de sostenibilidad afectados</td><td><textarea rows="2" placeholder="Escribe aquí…"></textarea></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SESSION 2 ── -->
+  <section id="session2" class="section">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:rgba(200,151,58,0.12);">🏢</div>
+      <div>
+        <h2>Session 2 · Business &amp; Case Studies</h2>
+        <div class="sec-desc">Discussion · Case studies · Creative project</div>
+      </div>
+    </div>
+
+    <!-- ACTIVITY 6 -->
+    <div class="activity">
+      <div class="activity-header">
+        <div class="activity-num">6</div>
+        <div>
+          <div class="activity-title">El Papel de las Empresas — Discusión</div>
+          <div class="activity-subtitle">In groups of three · Justify your positions with examples</div>
+          <div style="margin-top:8px;">
+            <span class="skill-tag tag-speaking">🗣 Speaking</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="instruction">En grupos de tres, discutan si están de acuerdo o no con las siguientes afirmaciones. Sustenten sus respuestas con ejemplos concretos.</div>
+
+      <ul class="discussion-list">
+        <li class="discussion-item"><div class="disc-num">1</div><p>Las empresas pueden contribuir al desarrollo sostenible de un país o región.</p></li>
+        <li class="discussion-item"><div class="disc-num">2</div><p>Las empresas no estatales deben proteger exclusivamente sus intereses privados.</p></li>
+        <li class="discussion-item"><div class="disc-num">3</div><p>Enriquecerse a costa del empobrecimiento de una población local no es ético.</p></li>
+        <li class="discussion-item"><div class="disc-num">4</div><p>Una empresa sostenible, ética y responsable puede generar grandes ganancias.</p></li>
+        <li class="discussion-item"><div class="disc-num">5</div><p>Las multinacionales han generado beneficios que no se comparten suficientemente con los países productores y sus comunidades.</p></li>
+        <li class="discussion-item"><div class="disc-num">6</div><p>Muchas veces el crecimiento económico de los países no es compatible con la inclusión social y la protección del medio ambiente.</p></li>
+        <li class="discussion-item"><div class="disc-num">7</div><p>En la mayoría de los países en desarrollo, las empresas privadas crean el mayor número de empleos.</p></li>
+        <li class="discussion-item"><div class="disc-num">8</div><p>Los organismos internacionales deben ayudar a las empresas a ser más sostenibles.</p></li>
+        <li class="discussion-item"><div class="disc-num">9</div><p>Menos emisiones ambientales y mejores condiciones de trabajo llevan a una menor productividad.</p></li>
+        <li class="discussion-item"><div class="disc-num">10</div><p>Las leyes y normativas de un país pueden afectar negativamente la sostenibilidad de las empresas.</p></li>
+        <li class="discussion-item"><div class="disc-num">11</div><p>Las PYMES son más sostenibles que las grandes transnacionales.</p></li>
+      </ul>
+
+      <div class="agree-row" style="margin-top:24px;">
+        <div class="agree-box" style="background:rgba(45,122,61,0.08);border:1px solid rgba(45,122,61,0.2);">
+          <div class="agree-box-title" style="color:#2d7a3d;">Estamos de acuerdo con…</div>
+          <textarea placeholder="Frases nº… porque…"></textarea>
+        </div>
+        <div class="agree-box" style="background:rgba(192,57,43,0.08);border:1px solid rgba(192,57,43,0.2);">
+          <div class="agree-box-title" style="color:#c0392b;">No estamos de acuerdo con…</div>
+          <textarea placeholder="Frases nº… porque…"></textarea>
+        </div>
+        <div class="agree-box" style="background:rgba(200,151,58,0.08);border:1px solid rgba(200,151,58,0.2);">
+          <div class="agree-box-title" style="color:#8a6010;">No estamos seguros sobre…</div>
+          <textarea placeholder="Frases nº… porque…"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTIVITY 7 -->
+    <div class="activity">
+      <div class="activity-header">
+        <div class="activity-num">7</div>
+        <div>
+          <div class="activity-title">Estudio de Caso — Premios Latinoamérica Verde</div>
+          <div class="activity-subtitle">Reading comprehension · Vocabulary in context</div>
+          <div style="margin-top:8px;">
+            <span class="skill-tag tag-reading">📖 Reading</span>
+            <span class="skill-tag tag-vocabulary">📚 Vocabulary</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="instruction">Lee el texto sobre las empresas ganadoras y explica en español qué significan las palabras destacadas.</div>
+
+      <div class="case-text">
+        <p style="margin-bottom:12px;"><em>Premios Latinoamérica Verde</em> es un evento anual celebrado en Guayaquil que reúne a los 500 mejores casos de América Latina. Convoca a <span class="highlight">ambientalistas</span>, académicos, investigadores, <span class="highlight">inversionistas</span>, políticos, emprendedores, empresarios e innovadores que apuestan a las oportunidades de la economía verde en Latinoamérica.</p>
+        <p style="margin-bottom:12px;">En 2015, tres de las dieciocho empresas <span class="highlight">galardonadas</span> fueron proyectos ecuatorianos: Biosem, Chocolate para la Conservación y Banco Procredit.</p>
+        <p style="margin-bottom:12px;">Dentro de la categoría agua, South Ecuameridiam presentó a Biosem, una planta compacta de tratamiento de aguas servidas <span class="highlight">reutilizando</span> contenedores marítimos. El sistema no usa químicos y es una opción para el manejo de aguas residuales. Por otro lado, la marca de chocolate orgánico WAO <span class="highlight">despuntó</span> en la categoría bosques y biodiversidad. Esta idea fue desarrollada por la Asociación de Mujeres de la comunidad indígena Waorani, que reemplazó la caza y venta de animales exóticos por una actividad económica más sostenible: el cultivo de cacao orgánico para la <span class="highlight">fabricación</span> de chocolate.</p>
+        <p>El Banco Procredit recibió el galardón en finanzas sostenibles. Sus principios son apoyar a las medianas y pequeñas empresas que generen empleo, fomentar la cultura del ahorro y no promover el crédito al consumo. Otros ganadores fueron Diseclar, de Colombia; Programa País Carbono Neutralidad, de Costa Rica; y La Casa G, <span class="highlight">vivienda</span> sustentable verde e inteligente, de Argentina.</p>
+      </div>
+
+      <div class="case-vocab">
+        <p style="font-size:14px;font-weight:600;margin-bottom:12px;">Define las siguientes palabras del texto en español:</p>
+        <div class="vocab-row"><span class="vocab-term">ambientalista</span><span class="vocab-colon">:</span><input type="text" placeholder="Escribe una definición…"></div>
+        <div class="vocab-row"><span class="vocab-term">inversionista</span><span class="vocab-colon">:</span><input type="text" placeholder="Escribe una definición…"></div>
+        <div class="vocab-row"><span class="vocab-term">concursan</span><span class="vocab-colon">:</span><input type="text" placeholder="Escribe una definición…"></div>
+        <div class="vocab-row"><span class="vocab-term">galardonadas</span><span class="vocab-colon">:</span><input type="text" placeholder="Escribe una definición…"></div>
+        <div class="vocab-row"><span class="vocab-term">reutilizando</span><span class="vocab-colon">:</span><input type="text" placeholder="Escribe una definición…"></div>
+        <div class="vocab-row"><span class="vocab-term">despuntó</span><span class="vocab-colon">:</span><input type="text" placeholder="Escribe una definición…"></div>
+        <div class="vocab-row"><span class="vocab-term">fabricación</span><span class="vocab-colon">:</span><input type="text" placeholder="Escribe una definición…"></div>
+        <div class="vocab-row"><span class="vocab-term">vivienda</span><span class="vocab-colon">:</span><input type="text" placeholder="Escribe una definición…"></div>
+      </div>
+    </div>
+
+    <!-- ACTIVITY 8 -->
+    <div class="activity">
+      <div class="activity-header">
+        <div class="activity-num">8</div>
+        <div>
+          <div class="activity-title">¿En qué categoría compiten?</div>
+          <div class="activity-subtitle">Apply knowledge of award categories to four companies</div>
+          <div style="margin-top:8px;">
+            <span class="skill-tag tag-reading">📖 Reading</span>
+            <span class="skill-tag tag-speaking">🗣 Speaking</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="instruction">Las siguientes empresas quieren participar en los Premios Latinoamérica Verde. ¿En qué categoría o categorías crees que pueden participar? Justifica tu respuesta.</div>
+
+      <table class="styled-table">
+        <thead><tr><th>Categoría(s)</th><th>Empresa y descripción</th></tr></thead>
+        <tbody>
+          <tr>
+            <td style="width:25%;"><input type="text" placeholder="Categoría(s)…"></td>
+            <td>
+              <strong>Natura Cosméticos</strong> produce y comercializa cosméticos, higiene personal y perfumería. El 65% de sus distribuidoras independientes provienen de los estratos más bajos de la población. Ha desarrollado un esquema de reutilización de empaques que recoge aproximadamente 38 toneladas anuales de residuos, reduciendo las emisiones de gases de efecto invernadero.
+              <br><a href="https://especiales.semana.com/empresas-que-mas-aportan/2017-2018/natura.html" target="_blank" rel="noopener" style="font-size:12px;color:var(--leaf);">↗ Más información</a>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="text" placeholder="Categoría(s)…"></td>
+            <td>
+              <strong>Fundación Carulla</strong> inició un proceso para educar a niños en ciudades con altos índices de pobreza, violencia intrafamiliar y personas desplazadas. En 2011, junto con el FOMIN del BID, creó un modelo de franquicia para proveer servicios de calidad a la población infantil de bajos ingresos.
+              <br><a href="https://afecolombia.org/fundaciones/fundacion-carulla-aeiotu/" target="_blank" rel="noopener" style="font-size:12px;color:var(--leaf);">↗ Más información</a>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="text" placeholder="Categoría(s)…"></td>
+            <td>
+              <strong>Homex</strong> es una compañía de construcción dedicada a vivienda de interés social. Ha instalado dispositivos de ahorro de agua, energía y gas en 82.000 viviendas, construido 25 plantas de tratamiento y plantado 34.780 árboles en su plan de reforestación.
+              <br><a href="https://www.homex.com.mx" target="_blank" rel="noopener" style="font-size:12px;color:var(--leaf);">↗ Más información</a>
+            </td>
+          </tr>
+          <tr>
+            <td><input type="text" placeholder="Categoría(s)…"></td>
+            <td>
+              <strong>Petramas</strong> es una empresa privada dedicada a la gestión integral de residuos sólidos: limpieza de calles, recolección, transporte y disposición final. Ha sido premiada en varias ocasiones por su contribución a preservar el medio ambiente y la salud pública.
+              <br><a href="https://www.petramas.com/" target="_blank" rel="noopener" style="font-size:12px;color:var(--leaf);">↗ Más información</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ACTIVITY 9 -->
+    <div class="activity">
+      <div class="activity-header">
+        <div class="activity-num">9</div>
+        <div>
+          <div class="activity-title">Crea tu Empresa — Premio Desarrollo Verde</div>
+          <div class="activity-subtitle">Creative group project · Presentation and class vote</div>
+          <div style="margin-top:8px;">
+            <span class="skill-tag tag-speaking">🗣 Speaking</span>
+            <span class="skill-tag tag-vocabulary">📚 Vocabulary</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="instruction">En grupos de tres, elijan un sector y creen una empresa que aplique principios básicos de sostenibilidad. Preparen una presentación. Por votación grupal elegirán la ganadora del Premio 'Desarrollo Verde'.</div>
+
+      <div class="company-builder">
+        <h3>🏆 Diseña tu empresa</h3>
+        <p>Completa los campos y prepara tu presentación para la clase.</p>
+
+        <div style="margin-bottom:20px;">
+          <div style="font-size:12px;text-transform:uppercase;letter-spacing:0.08em;color:var(--sage);font-weight:600;margin-bottom:10px;">Elige tu sector</div>
+          <div class="sector-grid" id="sectorGrid">
+            <button class="sector-btn" onclick="selectSector(this)">🍽 Alimentación</button>
+            <button class="sector-btn" onclick="selectSector(this)">👗 Moda</button>
+            <button class="sector-btn" onclick="selectSector(this)">🚌 Transporte</button>
+            <button class="sector-btn" onclick="selectSector(this)">🏖 Turismo</button>
+            <button class="sector-btn" onclick="selectSector(this)">🎪 Organización de eventos</button>
+            <button class="sector-btn" onclick="selectSector(this)">🏦 Banca</button>
+          </div>
+        </div>
+
+        <div class="company-fields">
+          <div class="company-field">
+            <label>Nombre de la empresa</label>
+            <input type="text" placeholder="Ej: EcoRutas S.A.">
+          </div>
+          <div class="company-field">
+            <label>Eslogan</label>
+            <input type="text" placeholder="Ej: 'Moverse, sin dejar huella'">
+          </div>
+          <div class="company-field">
+            <label>País sede</label>
+            <input type="text" placeholder="Ej: Colombia">
+          </div>
+          <div class="company-field">
+            <label>Mercado objetivo</label>
+            <input type="text" placeholder="¿A quién va dirigida?">
+          </div>
+          <div class="company-field company-textarea">
+            <label>Actividad comercial</label>
+            <textarea placeholder="Describe qué hace tu empresa…" rows="3"></textarea>
+          </div>
+        </div>
+
+        <div style="margin-top:24px;">
+          <div style="font-size:12px;text-transform:uppercase;letter-spacing:0.08em;color:var(--sage);font-weight:600;margin-bottom:14px;">Principios de sostenibilidad aplicados (selecciona los que aplica tu empresa)</div>
+
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--amber);margin-bottom:8px;">Sostenibilidad Económica y Social</div>
+          <div class="principles-check">
+            <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Salarios justos</label></div>
+            <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Paridad de género</label></div>
+            <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Contratos laborales</label></div>
+            <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Seguridad social</label></div>
+            <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Capacitación y formación</label></div>
+            <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Transparencia fiscal</label></div>
+            <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Generación de empleo local</label></div>
+            <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Respeto a las leyes laborales</label></div>
+            <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Justicia social e inclusión</label></div>
+            <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Competencia leal</label></div>
+          </div>
+
+          <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--sage);margin:16px 0 8px;">Sostenibilidad Ambiental</div>
+          <div class="principles-check">
+            <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Gestión del consumo de agua</label></div>
+            <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Manejo de desechos</label></div>
+            <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Reducción de emisiones</label></div>
+            <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Fuentes de energía renovable</label></div>
+            <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Protección del entorno</label></div>
+            <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Manejo de riesgos ambientales</label></div>
+            <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Materias primas obtenidas éticamente</label></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SESSION 3 ── -->
+  <section id="session3" class="section">
+    <div class="sec-head">
+      <div class="sec-icon" style="background:rgba(45,90,61,0.12);">📐</div>
+      <div>
+        <h2>Session 3 · Grammar &amp; Extended Writing</h2>
+        <div class="sec-desc">Perífrasis verbales · Practice exercises · Homework task</div>
+      </div>
+    </div>
+
+    <!-- ACTIVITY 10 -->
+    <div class="activity">
+      <div class="activity-header">
+        <div class="activity-num">10</div>
+        <div>
+          <div class="activity-title">Perífrasis Verbales — Gramática</div>
+          <div class="activity-subtitle">Verbal periphrases: infinitive, gerund and participle constructions</div>
+          <div style="margin-top:8px;">
+            <span class="skill-tag tag-grammar">📝 Grammar</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="instruction">Observa las expresiones en amarillo y decide a qué categoría pertenecen. Luego estudia la tabla de perífrasis.</div>
+
+      <div class="grammar-example">
+        <strong>Ejemplo:</strong> La región <mark style="background:rgba(200,151,58,0.3);padding:2px 5px;border-radius:3px;">continúa sufriendo</mark> los efectos de su modelo de desarrollo anterior.
+      </div>
+
+      <p style="font-size:14px;font-weight:600;margin-bottom:14px;">Clasifica las siguientes perífrasis:</p>
+
+      <div style="margin-bottom:16px;">
+        <div style="font-size:13px;padding:10px 14px;background:var(--sand);border-radius:8px;margin-bottom:8px;">
+          1. La ONU <mark style="background:rgba(200,151,58,0.3);padding:1px 4px;border-radius:3px;">acaba de aprobar</mark> los 17 Objetivos de desarrollo sostenible.
+        </div>
+        <div style="font-size:13px;padding:10px 14px;background:var(--sand);border-radius:8px;margin-bottom:8px;">
+          2. Los gobiernos <mark style="background:rgba(200,151,58,0.3);padding:1px 4px;border-radius:3px;">llevan luchando</mark> más de una década por reducir los indicadores negativos.
+        </div>
+        <div style="font-size:13px;padding:10px 14px;background:var(--sand);border-radius:8px;">
+          3. Brasil ha reducido la tala, pero no ha <mark style="background:rgba(200,151,58,0.3);padding:1px 4px;border-radius:3px;">dejado de utilizar</mark> los recursos madereros del Amazonas.
+        </div>
+      </div>
+
+      <div style="overflow-x:auto;">
+        <table class="perifr-table" style="margin-bottom:12px;">
+          <tr>
+            <th colspan="3" style="background:var(--forest);">Perífrasis que expresan el <em>final</em> de una acción</th>
+          </tr>
+          <tr style="background:rgba(200,200,200,0.1);"><td style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--mid);">Perífrasis</td><td style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--mid);">Uso</td><td style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--mid);">Ejemplo</td></tr>
+          <tr><td><span class="perifrasis">acabar de + infinitivo</span></td><td>Acción ocurrida hace poco tiempo</td><td><em>Naciones Unidas acaba de aprobar los nuevos estatutos.</em></td></tr>
+          <tr><td><span class="perifrasis">dejar de + infinitivo</span></td><td>Acción interrumpida</td><td><em>El país dejó de extraer petróleo en la reserva natural.</em></td></tr>
+          <tr><td><span class="perifrasis">llegar a + infinitivo</span></td><td>Fin de un proceso o resultado</td><td><em>Se dice que el agua llegará a tener más valor que el petróleo.</em></td></tr>
+        </table>
+
+        <table class="perifr-table" style="margin-bottom:12px;">
+          <tr>
+            <th colspan="3" style="background:var(--moss);">Perífrasis que expresan acciones <em>durativas</em></th>
+          </tr>
+          <tr style="background:rgba(200,200,200,0.1);"><td style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--mid);">Perífrasis</td><td style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--mid);">Uso</td><td style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--mid);">Ejemplo</td></tr>
+          <tr><td><span class="perifrasis">seguir / continuar + gerundio</span></td><td>Continuidad de una acción</td><td><em>A.L. continúa sufriendo los efectos de su modelo de desarrollo.</em></td></tr>
+          <tr><td><span class="perifrasis">seguir sin + infinitivo</span></td><td>Continuidad en la ausencia de acción</td><td><em>EE. UU. sigue sin levantar el embargo.</em></td></tr>
+          <tr><td><span class="perifrasis">llevar + gerundio</span></td><td>Cantidad de tiempo que dura una acción</td><td><em>El socialismo lleva más de una década gobernando.</em></td></tr>
+          <tr><td><span class="perifrasis">ir + gerundio</span></td><td>Proceso gradual con proyección futura</td><td><em>Los países van cumpliendo las metas en salud y educación.</em></td></tr>
+        </table>
+
+        <table class="perifr-table">
+          <tr>
+            <th colspan="3" style="background:var(--leaf);">Perífrasis que expresan el <em>comienzo</em> de una acción</th>
+          </tr>
+          <tr style="background:rgba(200,200,200,0.1);"><td style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--mid);">Perífrasis</td><td style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--mid);">Uso</td><td style="font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--mid);">Ejemplo</td></tr>
+          <tr><td><span class="perifrasis">empezar a / comenzar a + infinitivo</span></td><td>Comienzo de una acción</td><td><em>La empresa ha comenzado a vender sus productos en China.</em></td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- ACTIVITY 11 -->
+    <div class="activity">
+      <div class="activity-header">
+        <div class="activity-num">11</div>
+        <div>
+          <div class="activity-title">Forma Perífrasis — Ejercicio Práctico</div>
+          <div class="activity-subtitle">Complete the sentences using the correct verbal periphrasis</div>
+          <div style="margin-top:8px;">
+            <span class="skill-tag tag-grammar">📝 Grammar</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="instruction">Forma perífrasis con los elementos del recuadro y utilízalas para completar las oraciones. No todas las perífrasis necesitan preposición. Recuerda conjugar los verbos.</div>
+
+      <div class="word-bank">
+        <div class="word-bank-label">Verbos conjugados</div>
+        <div class="word-chips" style="margin-bottom:10px;">
+          <span class="chip">acaban</span><span class="chip">comenzar</span><span class="chip">continuar</span><span class="chip">dejaron</span><span class="chip">empezar</span><span class="chip">llegó</span><span class="chip">llevan</span><span class="chip">siguen</span><span class="chip">ir</span>
+        </div>
+        <div class="word-bank-label" style="margin-top:8px;">Preposiciones (opcionales)</div>
+        <div class="word-chips" style="margin-bottom:10px;">
+          <span class="chip">sin</span><span class="chip">a</span><span class="chip">de</span>
+        </div>
+        <div class="word-bank-label" style="margin-top:8px;">Verbos en infinitivo/gerundio</div>
+        <div class="word-chips">
+          <span class="chip">aumentando</span><span class="chip">buscando</span><span class="chip">cumplidos</span><span class="chip">firmar</span><span class="chip">lograr</span><span class="chip">presentando</span><span class="chip">tomar</span><span class="chip">tratando</span><span class="chip">salir</span><span class="chip">ser</span><span class="chip">vivir</span>
+        </div>
+      </div>
+
+      <div class="grammar-example" style="margin:16px 0;">
+        <strong>Ejemplo:</strong> Venezuela y Colombia <strong>acaban de firmar</strong> un acuerdo de colaboración en la frontera.
+      </div>
+
+      <ul class="gram-list">
+        <li class="gram-item">
+          <div class="gram-letter">a</div>
+          <div class="gram-text">A pesar de los progresos, todavía millones de personas <input class="gram-blank" size="14" placeholder="perífrasis"> <input class="gram-blank" size="14" placeholder="verbo"> salir de la pobreza absoluta.</div>
+        </li>
+        <li class="gram-item">
+          <div class="gram-letter">b</div>
+          <div class="gram-text">Con pocas excepciones, las economías de América Latina <input class="gram-blank" size="12" placeholder="perífrasis"> unos cuantos años <input class="gram-blank" size="14" placeholder="verbo"> sin éxito de mantener los niveles de crecimiento que tuvieron hasta 2011.</div>
+        </li>
+        <li class="gram-item">
+          <div class="gram-letter">c</div>
+          <div class="gram-text">El suministro de agua <input class="gram-blank" size="20" placeholder="perífrasis + verbo"> pero todavía no llega a cubrir el 100% de la población.</div>
+        </li>
+        <li class="gram-item">
+          <div class="gram-letter">d</div>
+          <div class="gram-text">En 2010, 700 millones de personas <input class="gram-blank" size="20" placeholder="perífrasis + verbo"> en condiciones de extrema pobreza, en comparación con 1990.</div>
+        </li>
+        <li class="gram-item">
+          <div class="gram-letter">e</div>
+          <div class="gram-text">La deuda externa de los países latinoamericanos con la banca internacional <input class="gram-blank" size="20" placeholder="perífrasis + verbo"> insostenible e impagable.</div>
+        </li>
+        <li class="gram-item">
+          <div class="gram-letter">f</div>
+          <div class="gram-text">Se <input class="gram-blank" size="20" placeholder="perífrasis + verbo"> casos de violaciones a los derechos humanos de inmigrantes en las fronteras mexicanas.</div>
+        </li>
+        <li class="gram-item">
+          <div class="gram-letter">g</div>
+          <div class="gram-text">Muchos venezolanos <input class="gram-blank" size="20" placeholder="perífrasis + verbo"> del país por la crisis económica.</div>
+        </li>
+        <li class="gram-item">
+          <div class="gram-letter">h</div>
+          <div class="gram-text">Algunos países latinoamericanos <input class="gram-blank" size="20" placeholder="perífrasis + verbo"> una solución a su dependencia de materias primas.</div>
+        </li>
+        <li class="gram-item">
+          <div class="gram-letter">i</div>
+          <div class="gram-text">Si no <input class="gram-blank" size="20" placeholder="perífrasis + verbo"> medidas drásticas para controlar la inflación, nos enfrentaremos a otra crisis económica.</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- HOMEWORK -->
+    <div class="homework-card">
+      <h3>📝 Trabajo en Casa</h3>
+      <p class="hw-intro">Como preparación para la prueba de escritura de la semana 12, escribe un texto de unas <strong>350 palabras</strong> resumiendo el contenido de los siguientes vídeos sobre ciudades sostenibles. Entrégaselo a tu profesor/a para recibir comentarios y correcciones.</p>
+
+      <div class="hw-videos">
+        <div class="hw-video-card">
+          <div class="hw-video-thumb">
+            <iframe src="https://www.youtube.com/embed/1ki9ZQZ9bn0" title="Ciudades Emergentes BID" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="hw-video-info">
+            <div class="hw-video-title">Iniciativa Ciudades Emergentes del BID</div>
+            <div class="hw-video-sub">5'01" · Banco Interamericano de Desarrollo</div>
+          </div>
+        </div>
+        <div class="hw-video-card">
+          <div class="hw-video-thumb">
+            <iframe src="https://www.youtube.com/embed/3m1Nauu3EQs" title="Ciudades Sostenibles Horacio Terraza" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="hw-video-info">
+            <div class="hw-video-title">Ciudades Sostenibles — Horacio Terraza</div>
+            <div class="hw-video-sub">2'51" · Urbanismo y desarrollo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hw-tips">
+        <h4>Consejos de redacción</h4>
+        <ul>
+          <li>No uses viñetas — escribe en párrafos</li>
+          <li>Cada párrafo desarrolla una idea central</li>
+          <li>Revisa ortografía: mayúsculas, acentos, puntuación</li>
+          <li>Usa variedad de estructuras y tiempos verbales</li>
+          <li>Incluye subjuntivos, perífrasis y conectores de discurso</li>
+          <li>Revisa el uso de <em>ser</em> y <em>estar</em></li>
+          <li>Revisa el uso de <em>por</em> y <em>para</em></li>
+          <li>Revisa indefinido e imperfecto</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    event.target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function selectSector(btn) {
+    document.querySelectorAll('.sector-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+  }
+
+  function toggleCheck(item) {
+    item.classList.toggle('checked');
+    const cb = item.querySelector('input[type="checkbox"]');
+    cb.checked = !cb.checked;
+  }
+</script>
+</body>
+</html>
